@@ -1,9 +1,5 @@
 # Avian Trails — aviantrails.in · version 3 (bird hide at first light)
 
-> Three designs are being compared. This is **v3, "Bird hide at first light"** (soft UI). The others are v1,
-> "Avian Trails Junction" (Indian Railways boards), and v2, "Avian Trails Metro", in the `aviantrails-v1` and
-> `aviantrails-v2` repositories. Content and features are the same; v3 is in English only.
-
 The new website for **Avian Trails**, the birding and bird-photography tour business of **Rajesh and Sheela Panwar**
 (Chhoti Haldwani, Kaladhungi, Uttarakhand). Built with Next.js 16, React 19 and Tailwind CSS 4.
 
