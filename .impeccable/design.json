@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-27T17:40:28.104Z",
+  "generatedAt": "2026-09-27T18:17:41.215103+00:00",
   "title": "Design System: Avian Trails",
   "extensions": {
     "colorMeta": {
@@ -373,6 +373,69 @@
         ],
         "phases": {
           "night": "#ff8a70"
+        }
+      },
+      "tragopan": {
+        "role": "region",
+        "displayName": "Satyr Tragopan Crimson",
+        "canonical": "oklch(44.8% 0.153 11.2)",
+        "tonalRamp": [
+          "oklch(15% 0.153 11.2)",
+          "oklch(25% 0.153 11.2)",
+          "oklch(35% 0.153 11.2)",
+          "oklch(45% 0.153 11.2)",
+          "oklch(55% 0.153 11.2)",
+          "oklch(68% 0.153 11.2)",
+          "oklch(82% 0.153 11.2)",
+          "oklch(95% 0.153 11.2)"
+        ],
+        "phases": {
+          "dawn": "#96203f",
+          "day": "#96203f",
+          "dusk": "#96203f",
+          "night": "#ff9bb0"
+        }
+      },
+      "teal": {
+        "role": "region",
+        "displayName": "Verditer Teal",
+        "canonical": "oklch(42.9% 0.072 188.2)",
+        "tonalRamp": [
+          "oklch(15% 0.072 188.2)",
+          "oklch(25% 0.072 188.2)",
+          "oklch(35% 0.072 188.2)",
+          "oklch(45% 0.072 188.2)",
+          "oklch(55% 0.072 188.2)",
+          "oklch(68% 0.072 188.2)",
+          "oklch(82% 0.072 188.2)",
+          "oklch(95% 0.072 188.2)"
+        ],
+        "phases": {
+          "dawn": "#0a5c57",
+          "day": "#0a5c57",
+          "dusk": "#0a5c57",
+          "night": "#7ee0d6"
+        }
+      },
+      "plum": {
+        "role": "region",
+        "displayName": "Monal Plum",
+        "canonical": "oklch(41.1% 0.107 317.7)",
+        "tonalRamp": [
+          "oklch(15% 0.107 317.7)",
+          "oklch(25% 0.107 317.7)",
+          "oklch(35% 0.107 317.7)",
+          "oklch(45% 0.107 317.7)",
+          "oklch(55% 0.107 317.7)",
+          "oklch(68% 0.107 317.7)",
+          "oklch(82% 0.107 317.7)",
+          "oklch(95% 0.107 317.7)"
+        ],
+        "phases": {
+          "dawn": "#623570",
+          "day": "#623570",
+          "dusk": "#623570",
+          "night": "#d3a8e8"
         }
       }
     },

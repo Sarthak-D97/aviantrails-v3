@@ -47,7 +47,7 @@ export default function ReviewsPage() {
         </FlockIn>
       </section>
 
-      <section aria-labelledby="camp" className="container-x pt-14 md:pt-20">
+      <section aria-labelledby="camp" className="container-x pt-16 md:pt-24">
         <SectionTitle id="camp">Before the lodge: Camp Milieu</SectionTitle>
         <p className="mt-3 max-w-2xl text-ink-2">
           In 2016–17, before Milieu Villa, the family ran Camp Milieu near Chhoti Haldwani: four mud huts, a feeder, a studio and home-cooked food.
@@ -76,7 +76,7 @@ export default function ReviewsPage() {
         </ol>
       </section>
 
-      <section className="container-x pt-14 pb-20 md:pt-20 md:pb-28">
+      <section className="container-x pt-16 pb-20 md:pt-24 md:pb-28">
         <div className="soft grid gap-8 p-4 sm:p-8 lg:grid-cols-12 lg:items-center">
           <div className="grid grid-cols-2 gap-4 lg:col-span-7">
             <Photo slug="group-road-2020" ratio={4 / 3} bezel={false} sizes="(min-width: 1024px) 28vw, 45vw" caption="A group on the road · 2020" alt="An Avian Trails group on a mountain road" />

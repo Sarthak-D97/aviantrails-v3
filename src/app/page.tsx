@@ -11,6 +11,7 @@ import { FlockIn } from "@/components/soft/FlockIn";
 import { PullTag } from "@/components/soft/PullTag";
 import { Shelf } from "@/components/soft/Shelf";
 import { toTag } from "@/content/board";
+import { lodges } from "@/content/lodges";
 import type { PhotoSlug } from "@/content/photo-sizes";
 import { reviews } from "@/content/reviews";
 import { record, site, whatsappLink } from "@/content/site";
@@ -21,7 +22,7 @@ export const revalidate = 86400;
 
 const hello = "Hello Rajesh, I found Avian Trails online and would like to know about your upcoming tours.";
 
-const ways: { title: string; text: string; href: string; link: string; photo: PhotoSlug; caption: string; position?: string }[] = [
+const ways: { title: string; text: string; href: string; link: string; photo: PhotoSlug; caption: string; tone: string }[] = [
   {
     title: "Departures",
     text: "Fixed-date small groups, India and abroad, each led by Rajesh.",
@@ -29,6 +30,7 @@ const ways: { title: string; text: string; href: string; link: string; photo: Ph
     link: "See the dates",
     photo: "mongolia-eagle-fox",
     caption: "Golden Eagle · Mongolia · Oct 2025",
+    tone: "text-grandala-ink",
   },
   {
     title: "Custom tours",
@@ -37,6 +39,7 @@ const ways: { title: string; text: string; href: string; link: string; photo: Ph
     link: "Plan one",
     photo: "panchachuli-dawn",
     caption: "Panchachuli at first light · Munsyari · Dec 2024",
+    tone: "text-teal",
   },
   {
     title: "Our two lodges",
@@ -45,8 +48,28 @@ const ways: { title: string; text: string; href: string; link: string; photo: Ph
     link: "Stay with us",
     photo: "manila-cheer-pheasants",
     caption: "Cheer Pheasants · Manila",
+    tone: "text-tragopan",
   },
 ];
+
+// A few frames from the gallery, chosen for colour and range: Himalaya to the Andes and New Guinea.
+const frames: { slug: PhotoSlug; caption: string }[] = [
+  { slug: "g-satyr-tragopan", caption: "Satyr Tragopan · Bhutan" },
+  { slug: "fire-tailed-sunbird-tawang", caption: "Fire-tailed Sunbird · Tawang · May 2026" },
+  { slug: "costarica-quetzal", caption: "Resplendent Quetzal · Costa Rica · Mar 2023" },
+  { slug: "g-scarlet-finch", caption: "Scarlet Finch · Munsiyari · Dec 2019" },
+  { slug: "colombia-multicolored-tanager", caption: "Multicolored Tanager · Colombia · Jul 2026" },
+  { slug: "g-sclaters-monal-white-tailed-2017", caption: "Sclater's Monal · Sela Pass · May 2017" },
+  { slug: "srilanka-blue-magpie", caption: "Sri Lanka Blue Magpie · Sinharaja · Dec 2019" },
+  { slug: "colombia-cock-of-the-rock", caption: "Andean Cock-of-the-rock · Colombia · Jul 2026" },
+  { slug: "png-flame-bowerbird", caption: "Flame Bowerbird · Papua New Guinea · Aug 2024" },
+];
+
+// Three birds from each lodge's doorstep, picked for colour; captions come from the lodge record.
+const doorstepPicks: Record<string, string[]> = {
+  "milieu-villa": ["hooded-pitta-kaladhungi", "long-tailed-broadbill", "pied-thrush-male-2026"],
+  manila: ["manila-koklass", "manila-himalayan-bluetail", "manila-wallcreeper"],
+};
 
 export default function Home() {
   const now = new Date();
@@ -85,7 +108,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       {/* The hide: the promise on one side, the window on the other. */}
-      <section className="container-x pt-6 md:pt-10">
+      <section className="container-x pt-8 md:pt-10">
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
           <div className="order-2 lg:order-1">
             <h1 className="text-[clamp(2.7rem,5.6vw,4.9rem)] leading-[0.98] tracking-[-0.025em]">
@@ -132,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* What leaves next: tags on the hide's board, dragged along a shelf. */}
-      <section aria-labelledby="next" className="pt-20 md:pt-28">
+      <section aria-labelledby="next" className="pt-16 md:pt-24">
         <div className="container-x flex flex-wrap items-end justify-between gap-4">
           <div>
             <SectionTitle id="next">Next departures</SectionTitle>
@@ -147,7 +170,7 @@ export default function Home() {
         </Shelf>
       </section>
 
-      <section aria-labelledby="ways" className="container-x pt-20 md:pt-28">
+      <section aria-labelledby="ways" className="container-x pt-16 md:pt-24">
         <SectionTitle id="ways">Three ways to go birding with us</SectionTitle>
         <FlockIn className="mt-8 grid gap-4 md:grid-cols-3 md:gap-6">
           {ways.map((w) => (
@@ -158,7 +181,7 @@ export default function Home() {
               <div className="flex flex-1 flex-col py-1 pr-1 md:px-3 md:pt-5 md:pb-3">
                 <h3 className="text-[1.3rem] leading-tight md:text-[1.6rem]">{w.title}</h3>
                 <p className="mt-1.5 text-[0.95rem] text-ink-2 md:mt-2 md:text-[1rem]">{w.text}</p>
-                <span className="mt-auto hidden items-center gap-1.5 pt-5 font-medium md:inline-flex">
+                <span className={`mt-auto hidden items-center gap-1.5 pt-5 font-medium md:inline-flex ${w.tone}`}>
                   {w.link}
                   <ArrowRight className="size-4 transition-transform duration-300 ease-[var(--ease-spring)] group-hover:translate-x-1" strokeWidth={2} aria-hidden="true" />
                 </span>
@@ -168,8 +191,81 @@ export default function Home() {
         </FlockIn>
       </section>
 
+      {/* The camera: a shelf of frames from the gallery, the most colour on the page. */}
+      <section aria-labelledby="frames" className="pt-16 md:pt-24">
+        <div className="container-x flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <SectionTitle id="frames">Frames from the field</SectionTitle>
+            <p className="mt-2 text-[0.95rem] text-ink-3">Rajesh&apos;s own photographs, made on the routes the tours run.</p>
+          </div>
+          <TextLink href="/gallery">The full gallery</TextLink>
+        </div>
+        <Shelf label="Frames from the gallery" className="mt-4" itemClassName="w-[13rem] sm:w-[15.5rem]">
+          {frames.map((f) => (
+            <Link key={f.slug} href="/gallery" draggable={false} className="group block text-ink no-underline">
+              <Photo slug={f.slug} caption={f.caption} ratio={4 / 5} sizes="(min-width: 640px) 15.5rem, 13rem" imgClassName="transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.05]" />
+            </Link>
+          ))}
+        </Shelf>
+      </section>
+
+      {/* Where you sleep: both lodges, each with three birds from its doorstep. */}
+      <section aria-labelledby="lodges" className="pt-16 md:pt-24">
+        <div className="container-x flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <SectionTitle id="lodges">Stay where the birds are</SectionTitle>
+            <p className="mt-2 text-[0.95rem] text-ink-3">Two birding lodges of our own in Kumaon, both run by Rajesh and Sheela.</p>
+          </div>
+          <TextLink href="/lodges">Both lodges</TextLink>
+        </div>
+        {/* A swipeable shelf on phones and tablets; side by side from desktop width. */}
+        <FlockIn className="shelf mt-2 gap-4 py-6 lg:mx-auto lg:mt-8 lg:max-w-[78rem] lg:grid-flow-row lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:px-[clamp(1.25rem,4.5vw,2.75rem)] lg:py-0">
+          {lodges.map((l) => {
+            const picks = (doorstepPicks[l.slug] ?? []).map((slug) => l.doorstep.find((d) => d.slug === slug)).filter((d) => d !== undefined);
+            return (
+              <article key={l.slug} className="soft flex w-[82vw] max-w-[27rem] flex-col p-3 sm:w-[62vw] lg:w-auto lg:max-w-none">
+                <Link href={`/lodges/${l.slug}`} tabIndex={-1} aria-hidden="true" className="group relative block overflow-hidden rounded-[1.2rem] bg-well">
+                  <div className="relative aspect-[16/10]">
+                    <Image src={`/photos/${l.hero}.jpg`} alt={altFromCaption(l.heroCaption)} fill sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-[1.04]" />
+                  </div>
+                  <span className="pebble num absolute top-3 left-3 px-3 py-1 text-[0.82rem] font-medium text-ink">{l.altitude}</span>
+                </Link>
+                <div className="flex flex-1 flex-col px-3 pt-5 pb-3 sm:px-4">
+                  <h3 className="text-[clamp(1.4rem,2.4vw,1.75rem)] leading-tight">
+                    <Link href={`/lodges/${l.slug}`} className="text-ink no-underline hover:underline">
+                      {l.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-[0.92rem] text-ink-3">
+                    {l.place} · since {l.opened}
+                  </p>
+                  <p className="mt-3 text-ink-2">{l.lead}</p>
+                  {picks.length ? (
+                    <div className="mt-auto pt-5">
+                      <p className="text-[0.85rem] font-medium text-ink-3">On the doorstep</p>
+                      <ul className="mt-2.5 grid grid-cols-3 gap-3">
+                        {picks.map((d) => (
+                          <li key={d.slug}>
+                            <Photo slug={d.slug} ratio={1} bezel={false} showCaption={false} alt={altFromCaption(d.caption)} sizes="(min-width: 1024px) 9rem, 30vw" />
+                            <p className="mt-1.5 text-[0.78rem] leading-snug text-ink-3">{d.caption.split(" · ")[0]}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                  <Link href={`/lodges/${l.slug}`} className={`group/link inline-flex items-center gap-1.5 self-start pt-5 font-medium text-moss no-underline ${picks.length ? "" : "mt-auto"}`}>
+                    Rooms, seasons and getting there
+                    <ArrowRight className="size-4 transition-transform duration-300 ease-[var(--ease-spring)] group-hover/link:translate-x-1" strokeWidth={2} aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </FlockIn>
+      </section>
+
       {/* One piece of proof, not a wall of it. */}
-      <section aria-labelledby="proof" className="container-x pt-20 md:pt-28">
+      <section aria-labelledby="proof" className="container-x pt-16 md:pt-24">
         <div className="soft grid items-center gap-8 p-4 sm:p-8 md:grid-cols-[0.85fr_1.15fr] md:gap-12">
           <Photo slug="rajesh-sheela" ratio={1} bezel={false} showCaption={false} alt="Rajesh and Sheela Panwar at home" sizes="(min-width: 768px) 34vw, 100vw" />
           <div className="px-1 pb-2 sm:px-0">
@@ -177,9 +273,9 @@ export default function Home() {
               India’s top eBirder, in 2019 and again in 2021.
             </h2>
             <p className="mt-4 text-ink-2">
-              Rajesh saw <span className="num font-medium text-ink">{record.topIndia[0].species}</span> species in India in 2019 and{" "}
-              <span className="num font-medium text-ink">{record.topIndia[1].species}</span> in 2021, and is #1 all-time in Uttarakhand with{" "}
-              <span className="num font-medium text-ink">{record.uttarakhandAllTimeSpecies}</span>. He and Sheela run every trip and both lodges themselves.
+              Rajesh saw <span className="num font-semibold text-tragopan">{record.topIndia[0].species}</span> species in India in 2019 and{" "}
+              <span className="num font-semibold text-tragopan">{record.topIndia[1].species}</span> in 2021, and is #1 all-time in Uttarakhand with{" "}
+              <span className="num font-semibold text-tragopan">{record.uttarakhandAllTimeSpecies}</span>. He and Sheela run every trip and both lodges themselves.
             </p>
             <blockquote className="soft-in mt-6 p-5">
               <p className="serif text-[1.25rem] leading-snug italic">“{quote.pull}”</p>
@@ -196,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* The close: tug the tag. */}
-      <section aria-labelledby="ask" className="container-x pt-20 md:pt-28">
+      <section aria-labelledby="ask" className="container-x pt-16 md:pt-24">
         <div className="soft grid items-center gap-6 p-6 sm:p-10 md:grid-cols-[1fr_auto] md:gap-12">
           <div>
             <h2 id="ask" className="text-[clamp(1.8rem,3.4vw,2.5rem)] leading-[1.08]">

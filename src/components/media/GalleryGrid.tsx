@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { accentDot, accentFor, accentText } from "@/content/accents";
 import type { GalleryGroup } from "@/content/gallery";
 import { photoSizes } from "@/content/photo-sizes";
 
@@ -52,19 +53,22 @@ export function GalleryGrid({ groups }: { groups: GalleryGroup[] }) {
 
   return (
     <>
-      <div role="group" aria-label="Region" className="-mx-1 flex gap-3 overflow-x-auto px-1 py-2 [scrollbar-width:none] sm:flex-wrap">
+      <div role="group" aria-label="Region" className="-mx-1 flex gap-2 overflow-x-auto px-1 py-2 [scrollbar-width:none] sm:flex-wrap">
         {groups.map((g) => {
           const on = g.id === group;
+          const accent = accentFor(g.id);
+          const tone = accentText[accent];
           return (
             <button
               key={g.id}
               type="button"
               aria-pressed={on}
               onClick={() => pick(g.id)}
-              className={`press inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full px-4 text-[0.95rem] ${on ? "soft-in font-medium text-grandala-ink" : "pebble text-ink-2 hover:text-ink"}`}
+              className={`press inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full px-3.5 text-[0.95rem] ${on ? `soft-in font-medium ${tone}` : "pebble text-ink-2 hover:text-ink"}`}
             >
+              <span aria-hidden="true" className={`size-2.5 shrink-0 rounded-full ${accentDot[accent]} ${on ? "ring-2 ring-[color-mix(in_oklab,currentColor_25%,transparent)]" : ""}`} />
               {g.name}
-              <span className={`num text-[0.82rem] ${on ? "text-grandala-ink" : "text-ink-3"}`}>{g.shots.length}</span>
+              <span className={`num text-[0.82rem] ${on ? tone : "text-ink-3"}`}>{g.shots.length}</span>
             </button>
           );
         })}

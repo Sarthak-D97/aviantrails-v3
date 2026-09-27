@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { accentDot, accentFor } from "@/content/accents";
 import type { SeatStatus } from "@/content/tours";
 import { SeatBadge } from "./SeatBadge";
 
 // A departure as a specimen tag: the eyelet, the tour number, the name, the dates and the seats.
-// The next departure wears the Sunbird flame.
+// The next departure wears the Sunbird flame; a small dot before the tour number wears its line's
+// plumage colour.
 
 export type TagRow = {
   no: number;
@@ -26,7 +28,10 @@ export function DepartureTag({ row, next = false, small = false, className = "" 
         <span className="eyelet" aria-hidden="true" />
         {next ? <span className="rounded-full bg-sunbird px-2.5 py-0.5 text-[0.75rem] font-semibold text-on-sunbird">{small ? "Next" : (<><span className="sm:hidden">Next</span><span className="hidden sm:inline">Next departure</span></>)}</span> : null}
       </span>
-      <span className="num mt-1 text-[0.85rem] text-ink-3">Tour {String(row.no).padStart(2, "0")}</span>
+      <span className="mt-1 flex items-center gap-1.5">
+        {row.line ? <span aria-hidden="true" className={`size-2 shrink-0 rounded-full ${accentDot[accentFor(row.line)]}`} /> : null}
+        <span className="num text-[0.85rem] text-ink-3">Tour {String(row.no).padStart(2, "0")}</span>
+      </span>
       <span className={`serif leading-[1.12] font-semibold ${small ? "text-[1.15rem]" : "text-[1.2rem] sm:text-[1.45rem]"}`}>{row.title}</span>
       <span className={`num text-ink-2 ${small ? "text-[0.85rem]" : "text-[0.88rem] sm:text-[0.95rem]"}`}>
         {row.dates} · {row.days} days

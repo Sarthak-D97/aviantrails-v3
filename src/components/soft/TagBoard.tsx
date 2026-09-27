@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { accentDot, accentFor, accentText } from "@/content/accents";
 import { DepartureTag, type TagRow } from "./DepartureTag";
 
 // The departures board: pebbles pick a region, and the tags that match fly in and land in order.
@@ -24,6 +25,8 @@ export function TagBoard({ rows, lines }: { rows: TagRow[]; lines: { id: string;
       <div role="group" aria-label="Show departures in" className="-mx-1 flex gap-3 overflow-x-auto px-1 py-2 [scrollbar-width:none] sm:flex-wrap">
         {choices.map((c) => {
           const on = c.id === line;
+          const accent = c.id === "all" ? null : accentFor(c.id);
+          const tone = accent ? accentText[accent] : "text-grandala-ink";
           return (
             <button
               key={c.id}
@@ -31,11 +34,12 @@ export function TagBoard({ rows, lines }: { rows: TagRow[]; lines: { id: string;
               aria-pressed={on}
               onClick={() => pick(c.id)}
               className={`press inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full px-4 text-[0.95rem] ${
-                on ? "soft-in font-medium text-grandala-ink" : "pebble text-ink-2 hover:text-ink"
+                on ? `soft-in font-medium ${tone}` : "pebble text-ink-2 hover:text-ink"
               }`}
             >
+              {accent ? <span aria-hidden="true" className={`size-2.5 shrink-0 rounded-full ${accentDot[accent]} ${on ? "ring-2 ring-[color-mix(in_oklab,currentColor_25%,transparent)]" : ""}`} /> : null}
               {c.name}
-              <span className={`num text-[0.82rem] ${on ? "text-grandala-ink" : "text-ink-3"}`}>{c.n}</span>
+              <span className={`num text-[0.82rem] ${on ? tone : "text-ink-3"}`}>{c.n}</span>
             </button>
           );
         })}

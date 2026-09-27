@@ -11,7 +11,8 @@ The design is a **bird hide at first light**: soft, moulded surfaces on a lichen
 for the visitor right now. The page follows the visitor's clock (dawn, daylight, golden hour, night): the ground, the
 shadows, the sky in the hide window and even the softness of the Fraunces headings change with the hour. A chip on the
 home page shows the light and lets you preview the others. Headings are Fraunces, everything else Lexend. Grandala
-blue is the one action colour (WhatsApp), the Sunbird flame marks the next departure.
+blue is the one action colour (WhatsApp), the Sunbird flame marks the next departure, and each region wears a bird's
+colour of its own (Tragopan crimson for the North-East, teal for the south, plum for trips abroad, ochre for the desert).
 
 Motion, all in plain JavaScript and all switched off for visitors who ask for reduced motion:
 
@@ -21,6 +22,9 @@ Motion, all in plain JavaScript and all switched off for visitors who ask for re
   enough and it opens WhatsApp. Shelves of tours and photographs stretch at their ends when dragged with a mouse.
 - **Landing** — lists land one after another like birds settling, when they scroll into view or when you pick a
   region, year or filter.
+- **First light** — on the first page of a visit, a short preloader: the Sunbird in a moulded pebble, a groove that
+  fills in plumage colours, the name of the hour, and a small flock crossing the screen. It shows once per visit and
+  never holds the page for more than about 2.5 seconds. Between pages, a soft skeleton shows while a page loads.
 
 Every photograph and video clip is Rajesh's own (or his guests'), taken from his Instagram and the old website.
 Nothing on the site is AI-generated.
@@ -29,7 +33,7 @@ Nothing on the site is AI-generated.
 
 | Route | What it is |
 | --- | --- |
-| `/` | The promise ("Rajesh Panwar gets you the birds.") beside the hide window (flock, Grandalas, next departure tag), a shelf of next departures, the three ways to travel, one piece of proof, and the pull tag |
+| `/` | The promise ("Rajesh Panwar gets you the birds.") beside the hide window (flock, Grandalas, next departure tag), a shelf of next departures, the three ways to travel, a shelf of frames from the gallery, both lodges with three birds from each doorstep, one piece of proof, and the pull tag |
 | `/departures` | The 2026–27 departures as tags (filter by region; tap a tour to open it) and, folded away, the tours already departed |
 | `/departures/[tour]` | One page per tour: dates, days, seats, cost, highlights, the last run's report and eBird list, a photo shelf, reservation form |
 | `/custom-tours` | Six regions, each with its places folded under a count, and a custom-trip request |

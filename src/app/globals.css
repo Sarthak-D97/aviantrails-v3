@@ -6,6 +6,9 @@
    night). Every shadow is cast from the sun's position: --lx/--ly are set before paint by the
    circadian script in the layout. Accents come from plumage only: Grandala ultramarine for the
    action, Fire-tailed Sunbird flame for the next departure, ochre for the sun on the light chip.
+   Five more plumage colours (tragopan, teal, plum, plus moss and fern already on the logo) tell
+   the site's regions and groups apart — a Satyr Tragopan's crimson for the North-East, a Verditer
+   Flycatcher's teal for the south and Ladakh, an orchid plum for trips abroad.
    ------------------------------------------------------------------------------------------ */
 
 @theme inline {
@@ -29,6 +32,9 @@
   --color-sunbird: var(--sunbird);
   --color-on-sunbird: var(--on-sunbird);
   --color-ochre: var(--ochre);
+  --color-tragopan: var(--tragopan);
+  --color-teal: var(--teal);
+  --color-plum: var(--plum);
   --color-seat: var(--seat);
   --color-seat-bg: var(--seat-bg);
   --color-wait: var(--wait);
@@ -67,6 +73,9 @@
   --sunbird: #c93a21;
   --on-sunbird: #ffffff;
   --ochre: #a97718;
+  --tragopan: #96203f;
+  --teal: #0a5c57;
+  --plum: #623570;
   --seat: #2f6b2c;
   --seat-bg: #d2e3c2;
   --wait: #7a4f08;
@@ -127,6 +136,9 @@
   --sunbird: #ff7a5a;
   --on-sunbird: #1c100c;
   --ochre: #e0b155;
+  --tragopan: #ff9bb0;
+  --teal: #7ee0d6;
+  --plum: #d3a8e8;
   --seat: #a8d98f;
   --seat-bg: #213a22;
   --wait: #f0c56a;
@@ -157,8 +169,15 @@
     transition: background-color 600ms var(--ease-out);
   }
 
+  /* The ground catches the hour's sky: two soft washes of the phase's sky colours at the top of
+     the page (blue by day, peach and lavender at dawn, orange and rose at golden hour, indigo at
+     night). Moulded surfaces keep the plain ground colour, so they read as lit from above. */
   body {
-    background: var(--ground);
+    background:
+      radial-gradient(72rem 38rem at 92% -6%, color-mix(in oklab, var(--sky-a) 42%, transparent), transparent 72%),
+      radial-gradient(58rem 32rem at -8% 10%, color-mix(in oklab, var(--sky-b) 34%, transparent), transparent 72%),
+      var(--ground);
+    background-repeat: no-repeat;
     font-size: 1.0625rem;
     line-height: 1.6;
     font-weight: 380;
@@ -369,6 +388,174 @@
   }
 }
 
+/* ---------------------------------------------------------------------------------------------
+   Preloader: first light in the hide. Shown once per visit; the head script marks repeat views
+   (data-preloaded) before paint, PreloaderExit marks the lift (data-loaded), and the delayed
+   animation clears it even if script never runs.
+   --------------------------------------------------------------------------------------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(60rem 34rem at 82% 0%, color-mix(in oklab, var(--sky-a) 55%, transparent), transparent 70%),
+    radial-gradient(52rem 30rem at 8% 100%, color-mix(in oklab, var(--sky-b) 50%, transparent), transparent 70%),
+    var(--ground);
+  transition:
+    opacity 700ms var(--ease-out),
+    visibility 0s linear 700ms;
+  animation: preloader-out 600ms var(--ease-out) 2.6s forwards;
+}
+:root[data-preloaded] .preloader {
+  display: none;
+}
+:root[data-loaded] .preloader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+@keyframes preloader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.preloader-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 600ms var(--ease-out),
+    opacity 450ms var(--ease-out);
+}
+:root[data-loaded] .preloader-body {
+  transform: translateY(-14px) scale(0.97);
+  opacity: 0;
+}
+
+.preloader-pebble {
+  display: grid;
+  place-items: center;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 999px;
+  animation: preloader-breathe 2.4s ease-in-out infinite;
+}
+@keyframes preloader-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+/* A groove pressed into the ground that fills in plumage colours. */
+.preloader-track {
+  display: block;
+  width: 11.5rem;
+  height: 0.6rem;
+  padding: 0.14rem;
+  border-radius: 999px;
+}
+.preloader-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--grandala), var(--teal), var(--ochre), var(--sunbird), var(--tragopan));
+  animation: preloader-fill 1.1s var(--ease-out) 0.1s both;
+}
+@keyframes preloader-fill {
+  from {
+    clip-path: inset(0 96% 0 0 round 999px);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 999px);
+  }
+}
+
+.preloader-phase::after {
+  content: "Daylight · finding the birds";
+}
+:root[data-phase="dawn"] .preloader-phase::after {
+  content: "Dawn chorus · finding the birds";
+}
+:root[data-phase="dusk"] .preloader-phase::after {
+  content: "Golden hour · finding the birds";
+}
+:root[data-phase="night"] .preloader-phase::after {
+  content: "Night · finding the birds";
+}
+
+/* A small flock crosses the screen in a loose V, wings beating. */
+.preloader-flock {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  height: 0;
+}
+.preloader-bird {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 19px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--flock);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+  translate: -14vw 0;
+  animation:
+    preloader-fly 2.5s cubic-bezier(0.4, 0.1, 0.3, 1) var(--bd, 0s) both,
+    preloader-flap var(--bf, 0.24s) ease-in-out infinite alternate;
+}
+@keyframes preloader-fly {
+  from {
+    translate: calc(-14vw + var(--bx, 0px)) calc(var(--by, 0px) + 40px);
+  }
+  to {
+    translate: calc(114vw + var(--bx, 0px)) calc(var(--by, 0px) - 70px);
+  }
+}
+@keyframes preloader-flap {
+  from {
+    scale: 1 1;
+  }
+  to {
+    scale: 0.92 -0.55;
+  }
+}
+
+/* Loading skeletons: grooves pressed into the ground, with light passing along them. */
+.skeleton {
+  display: block;
+  border-radius: 999px;
+  background: linear-gradient(100deg, var(--well) 30%, color-mix(in oklab, var(--well) 50%, var(--surface-hi)) 50%, var(--well) 70%);
+  background-size: 220% 100%;
+  box-shadow:
+    inset calc(var(--lx) * 0.5) calc(var(--ly) * 0.5) 6px var(--lo),
+    inset calc(var(--lx) * -0.5) calc(var(--ly) * -0.5) 6px var(--hi);
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -381,5 +568,8 @@
   .flock-armed > * {
     opacity: 1;
     transform: none;
+  }
+  .preloader-flock {
+    display: none;
   }
 }

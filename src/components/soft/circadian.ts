@@ -46,4 +46,5 @@ var n=p==='night',t=Math.PI*Math.min(Math.max((h-6)/12,0),1),k=7;
 r.style.setProperty('--lx',(n?3:Math.cos(t)*k).toFixed(1)+'px');
 r.style.setProperty('--ly',(n?6:Math.max(Math.sin(t),.45)*k).toFixed(1)+'px');
 r.style.setProperty('--soft',String(n?100:Math.round(100*(1-Math.sin(t)))));
+try{if(sessionStorage.getItem('at-seen'))r.dataset.preloaded='1';}catch(e){}
 }catch(e){}})();`;

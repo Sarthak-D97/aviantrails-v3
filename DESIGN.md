@@ -16,6 +16,9 @@ colors:
   sunbird: "#c93a21"
   on-sunbird: "#ffffff"
   ochre: "#a97718"
+  tragopan: "#96203f"
+  teal: "#0a5c57"
+  plum: "#623570"
   seat: "#2f6b2c"
   seat-bg: "#d2e3c2"
   wait: "#7a4f08"
@@ -187,7 +190,7 @@ Motion is spring-led on purpose: the owner asked for an elastic pull and a flock
 
 ## 2. Colors: The Flora and Plumage Palette
 
-A single sage-lichen ground carries almost everything; colour arrives only as plumage, and only where it means something. Frontmatter values are the day phase (the default); the other phases are below.
+A single sage-lichen ground carries the surfaces; colour arrives as plumage, and each hue means something: the action, the next departure, a seat state, or a region. The ground also catches the hour's sky in two soft washes at the top of each page. Frontmatter values are the day phase (the default); the other phases are below.
 
 ### Primary
 - **Grandala Ultramarine** (`grandala`): the one action colour. The WhatsApp pebble, the pull tag, focus rings and text selection. Hover deepens to **Grandala Deep** (`grandala-deep`). Night lifts it to #4d69e8.
@@ -197,8 +200,17 @@ A single sage-lichen ground carries almost everything; colour arrives only as pl
 - **Fire-tailed Sunbird Flame** (`sunbird`): the "Next departure" flag and nothing else. Night lifts it to #ff7a5a with dark text (#1c100c).
 
 ### Tertiary
-- **Hill Ochre** (`ochre`): the phase icon in the circadian chip, and nothing else (waitlist uses `wait`, not ochre). Night #e0b155.
-- **Moss** (`moss`): the Sunbird bird mark in the header and footer. Night #b9cf9f.
+- **Hill Ochre** (`ochre`): the phase icon in the circadian chip, and the region colour of the desert lines and Ladakh & Kashmir (waitlist uses `wait`, not ochre). Night #e0b155.
+- **Moss** (`moss`): the Sunbird bird mark, the lodge links on the home page, and the Kaladhungi & Corbett gallery group. Night #b9cf9f.
+- **Fern** (`fern`): the Night & landscape gallery group. Night #9fbb7e.
+
+### Region plumage
+Each departure line, custom-tour region and gallery group wears one accent, mapped in `src/content/accents.ts`. It shows as a small solid dot (on pebbles, departure tags and region headings) and as the text colour of a chosen pebble. All three new hues hold at least 4.8:1 on `well` and `ground` in every phase.
+- **Grandala** (`grandala-ink` text): Himalaya, Uttarakhand, Ladakh-Kashmir-Himachal custom line.
+- **Satyr Tragopan Crimson** (`tragopan`): the North-East. Also the record figures (791, 807, 621) and the lodges link on the home page's "Three ways". Night #ff9bb0.
+- **Verditer Teal** (`teal`): the south and the islands; the custom-tours link on "Three ways". Night #7ee0d6.
+- **Monal Plum** (`plum`): trips abroad. Night #d3a8e8.
+- **Hill Ochre** (`ochre`): the desert and the west; Ladakh & Kashmir in the gallery.
 
 ### State
 - **Seat** (`seat` on `seat-bg`): seats available. Night #a8d98f on #213a22.
@@ -221,14 +233,14 @@ A single sage-lichen ground carries almost everything; colour arrives only as pl
 | Dusk (golden grass) | #e6d9aa | #dacb98 | #cdbd86 | #f0b27a to #e8a3a0 | #3b2a22 | rgb(255 248 220/.80) | rgb(122 92 30/.32) |
 | Night | #172019 (surface #202b22) | #121a14 | #2c3a2e | #0e1531 to #1b2a3a | #dfe7d2 | rgb(210 230 190/.09) | rgb(0 0 0/.55) |
 
-Dusk also warms `ink-2` (#454c3a) and `ink-3` (#4a4f3e). Night lifts the surface a step above the ground so raised shapes read in the dark, inverts ink (#e3e9d7 / #b6c1a9 / #95a188) and sets `color-scheme: dark`. The sky gradient (170deg, sky-a to sky-b) appears only inside the hide window.
+Dusk also warms `ink-2` (#454c3a) and `ink-3` (#4a4f3e). Night lifts the surface a step above the ground so raised shapes read in the dark, inverts ink (#e3e9d7 / #b6c1a9 / #95a188) and sets `color-scheme: dark`. The sky gradient (170deg, sky-a to sky-b) fills the hide window; the same two sky colours also wash the top of the page body (sky-a at 42% from the top right, sky-b at 34% from the left), so dawn reads peach and lavender, dusk orange and rose, night indigo. Moulded surfaces keep the plain ground colour.
 
 ### Named Rules
-**The One Action Rule.** Grandala blue means "do this". It is never decoration, never a heading colour, never a background panel. When a chosen option is pressed into a well, its text takes the action's text form, `grandala-ink`, never raw `grandala`.
+**The One Action Rule.** Grandala blue means "do this" (and, as a dot, the Himalaya region). It is never a heading colour or a background panel. When a chosen option is pressed into a well, its text takes the action's text form, `grandala-ink`, never raw `grandala`.
 
 **The One Flame Rule.** Sunbird flame marks the single next departure. One flag per view; no other element may wear it.
 
-**The Plumage Rule.** Every accent is a real bird's colour. No new hue enters without a bird behind it.
+**The Plumage Rule.** Every accent is a real bird's colour. No new hue enters without a bird behind it. Region hues mark place, never state: seat colours stay the only state colours.
 
 **The State in Words Rule.** Seat colours always travel with the words ("3 seats left", "Waitlist") and a dot; colour is never the only signal.
 
@@ -319,6 +331,12 @@ An inset rounded slot filled with the phase's sky gradient, holding a 64-bird bo
 ### Flock Landing
 Lists below the fold arrive like a flock: from 25% opacity and a small curved offset (about ±14–32px, ±2.5–3deg), each item lands over 760ms on the spring, 70ms apart, cycling every 8 items. Items already in view are never held back, and the resting state is always visible.
 
+### Preloader (signature)
+First light in the hide, once per visit: a full-screen ground with the sky washes, a raised pebble (7.5rem) holding the moss Sunbird and breathing on a 2.4s loop, the wordmark in Fraunces, a groove pressed into the ground that fills in plumage colours (grandala → teal → ochre → sunbird → tragopan) over 1.1s, and the hour's name ("Golden hour · finding the birds"). A V of seven stroked birds crosses the screen, wings beating. It lifts (fade, content rises 14px) once fonts and the first photographs are in, no sooner than 1.1s and no later than 2.4s; a CSS animation clears it at 2.6s if script never runs. The head script marks repeat views in the session before paint, so later pages never see it. Reduced motion: no flight, no breathing.
+
+### Loading Skeleton
+Between pages (`app/loading.tsx`): the Sunbird pebble and the plumage groove on a loop, then grooves pressed into the ground in the shape of a page opening and three cards, with light passing along them (1.6s).
+
 ### Share Cards
 1200 × 630, day palette only: sage ground, the name in Fraunces 600, facts in Lexend 400/500 (static woffs), a pressed seat badge, one of Rajesh's photographs in a bezel, and the flame "Next" flag when relevant.
 
@@ -342,5 +360,5 @@ Lists below the fold arrive like a flock: from 25% opacity and a small curved of
 - **Don't** add borders or hairline outlines to soft surfaces, or give a card a fill different from the ground to separate it.
 - **Don't** use a fixed top-left light or a grey drop shadow with hard-coded offsets.
 - **Don't** add uppercase kickers or eyebrow labels above headings.
-- **Don't** use Sunbird flame, ochre or seat colours for decoration, or add any accent hue without a bird behind it.
+- **Don't** use Sunbird flame or seat colours for decoration, give a region hue to a state, or add any accent hue without a bird behind it.
 - **Don't** use stock or AI-generated imagery of birds, people or places.
