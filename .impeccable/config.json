@@ -1,0 +1,21 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-09-27T17:34:54.306Z",
+        "reason": "v3 brief explicitly requests 'Elastic pull' motion; the spring overshoot token is the requested elastic feel"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "var(--ease-spring)",
+        "createdAt": "2026-09-27T17:34:54.349Z",
+        "reason": "v3 brief explicitly requests 'Elastic pull' motion; land/press use the spring token by design"
+      }
+    ]
+  }
+}

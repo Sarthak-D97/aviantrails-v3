@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------------------------------
+   Avian Trails v3: a bird hide at first light.
+   Soft UI moulded from one flora ground that follows the visitor's hour (dawn, day, dusk,
+   night). Every shadow is cast from the sun's position: --lx/--ly are set before paint by the
+   circadian script in the layout. Accents come from plumage only: Grandala ultramarine for the
+   action, Fire-tailed Sunbird flame for the next departure, ochre for the sun on the light chip.
+   ------------------------------------------------------------------------------------------ */
+
+@theme inline {
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-lexend), system-ui, sans-serif;
+
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-hi: var(--surface-hi);
+  --color-well: var(--well);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-moss: var(--moss);
+  --color-fern: var(--fern);
+  --color-grandala: var(--grandala);
+  --color-grandala-deep: var(--grandala-deep);
+  --color-grandala-ink: var(--grandala-ink);
+  --color-on-grandala: var(--on-grandala);
+  --color-sunbird: var(--sunbird);
+  --color-on-sunbird: var(--on-sunbird);
+  --color-ochre: var(--ochre);
+  --color-seat: var(--seat);
+  --color-seat-bg: var(--seat-bg);
+  --color-wait: var(--wait);
+  --color-wait-bg: var(--wait-bg);
+  --color-gone: var(--gone);
+  --color-alert: var(--alert);
+}
+
+@theme {
+  --radius-soft: 1.5rem;
+  --radius-pebble: 999px;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --breakpoint-xs: 26rem;
+}
+
+/* Day: lichen-sage mist. The defaults, so the page is right even before the script runs. */
+:root,
+:root[data-phase="day"] {
+  color-scheme: light;
+  --ground: #e3e9d7;
+  --surface: #e3e9d7;
+  --surface-hi: #ebf0e1;
+  --well: #d6dec8;
+  --ink: #1d2a1c;
+  --ink-2: #455541;
+  --ink-3: #4c5a46;
+  --rule: #c8d2b8;
+  --moss: #34502e;
+  --fern: #5f7d45;
+  --grandala: #2c4dcc;
+  --grandala-deep: #223fae;
+  /* the action colour as text on a pressed-in well (selected chips) */
+  --grandala-ink: #223fae;
+  --on-grandala: #ffffff;
+  --sunbird: #c93a21;
+  --on-sunbird: #ffffff;
+  --ochre: #a97718;
+  --seat: #2f6b2c;
+  --seat-bg: #d2e3c2;
+  --wait: #7a4f08;
+  --wait-bg: #efdfb8;
+  --gone: #5c6457;
+  --alert: #b0301c;
+  --hi: rgb(255 255 255 / 0.82);
+  --lo: rgb(80 102 64 / 0.3);
+  --sky-a: #cfe0ee;
+  --sky-b: #eef2e6;
+  --flock: #28402a;
+}
+
+:root[data-phase="dawn"] {
+  --ground: #e6e7d9;
+  --surface: #e6e7d9;
+  --surface-hi: #eeefe3;
+  --well: #d9dbca;
+  --rule: #cfd1bd;
+  --hi: rgb(255 253 247 / 0.88);
+  --lo: rgb(118 108 88 / 0.28);
+  --sky-a: #f3cdb4;
+  --sky-b: #d9d6ec;
+  --flock: #3a3548;
+}
+
+:root[data-phase="dusk"] {
+  --ground: #e6d9aa;
+  --surface: #e6d9aa;
+  --surface-hi: #eee2b8;
+  --well: #dacb98;
+  --rule: #cdbd86;
+  --ink-2: #454c3a;
+  --ink-3: #4a4f3e;
+  --hi: rgb(255 248 220 / 0.8);
+  --lo: rgb(122 92 30 / 0.32);
+  --sky-a: #f0b27a;
+  --sky-b: #e8a3a0;
+  --flock: #3b2a22;
+}
+
+:root[data-phase="night"] {
+  color-scheme: dark;
+  --ground: #172019;
+  --surface: #202b22;
+  --surface-hi: #26322a;
+  --well: #121a14;
+  --ink: #e3e9d7;
+  --ink-2: #b6c1a9;
+  --ink-3: #95a188;
+  --rule: #2c3a2e;
+  --moss: #b9cf9f;
+  --fern: #9fbb7e;
+  --grandala: #4d69e8;
+  --grandala-deep: #3f5bd8;
+  --grandala-ink: #9fb0ff;
+  --on-grandala: #ffffff;
+  --sunbird: #ff7a5a;
+  --on-sunbird: #1c100c;
+  --ochre: #e0b155;
+  --seat: #a8d98f;
+  --seat-bg: #213a22;
+  --wait: #f0c56a;
+  --wait-bg: #3e3218;
+  --gone: #97a28c;
+  --alert: #ff8a70;
+  --hi: rgb(210 230 190 / 0.09);
+  --lo: rgb(0 0 0 / 0.55);
+  --sky-a: #0e1531;
+  --sky-b: #1b2a3a;
+  --flock: #dfe7d2;
+}
+
+@layer base {
+  html {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 6rem;
+    scrollbar-color: var(--rule) var(--ground);
+    /* the sun's light direction; the circadian script replaces these before paint */
+    --lx: 5px;
+    --ly: 7px;
+    --soft: 30;
+    transition: background-color 600ms var(--ease-out);
+  }
+
+  body {
+    background: var(--ground);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-weight: 380;
+    min-height: 100dvh;
+  }
+
+  :root[data-phase="night"] body {
+    font-weight: 340;
+    letter-spacing: 0.005em;
+  }
+
+  @media (min-width: 48rem) {
+    body {
+      font-size: 1.125rem;
+    }
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" var(--soft), "WONK" 0;
+    text-wrap: balance;
+    font-weight: 560;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--grandala);
+    color: var(--on-grandala);
+  }
+
+  :focus-visible {
+    outline: 2.5px solid var(--grandala);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1.5px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ground);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border-radius: 999px;
+    border: 2px solid var(--ground);
+  }
+
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .serif {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" var(--soft), "WONK" 0;
+  }
+
+  .container-x {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4.5vw, 2.75rem);
+  }
+
+  /* Raised: moulded out of the ground, lit by the sun. */
+  .soft {
+    background: var(--surface);
+    border-radius: var(--radius-soft);
+    box-shadow:
+      calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi),
+      var(--lx) var(--ly) 20px var(--lo);
+  }
+  /* Pressed into the ground. */
+  .soft-in {
+    background: var(--well);
+    border-radius: var(--radius-soft);
+    box-shadow:
+      inset var(--lx) var(--ly) 12px var(--lo),
+      inset calc(var(--lx) * -1) calc(var(--ly) * -1) 12px var(--hi);
+  }
+  /* A small raised pebble (chips, icon buttons). */
+  .pebble {
+    background: var(--surface);
+    border-radius: 999px;
+    box-shadow:
+      calc(var(--lx) * -0.6) calc(var(--ly) * -0.6) 10px var(--hi),
+      calc(var(--lx) * 0.6) calc(var(--ly) * 0.6) 12px var(--lo);
+  }
+
+  /* Things you can press: they lift on hover and sink, with a spring, when pressed. */
+  .press {
+    transition:
+      transform 360ms var(--ease-spring),
+      box-shadow 240ms var(--ease-out),
+      background-color 200ms var(--ease-out);
+  }
+  .press:hover {
+    transform: translateY(-2px);
+  }
+  .press:active {
+    transform: translateY(1px) scale(0.975);
+    transition-duration: 90ms;
+  }
+
+  /* The action colour: a Grandala-blue pebble with a soft coloured shadow. */
+  .action {
+    background: var(--grandala);
+    color: var(--on-grandala);
+    border-radius: 999px;
+    box-shadow:
+      calc(var(--lx) * -0.6) calc(var(--ly) * -0.6) 12px var(--hi),
+      calc(var(--lx) * 0.8) calc(var(--ly) * 0.8) 18px color-mix(in oklab, var(--grandala) 45%, transparent);
+  }
+  .action:hover {
+    background: var(--grandala-deep);
+  }
+
+  /* Photo bezel: the photograph sits in a moulded frame. */
+  .bezel {
+    padding: 0.5rem;
+    background: var(--surface);
+    border-radius: calc(var(--radius-soft) + 0.25rem);
+    box-shadow:
+      calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi),
+      var(--lx) var(--ly) 22px var(--lo);
+  }
+
+  /* Specimen tag: a card with a punched eyelet. */
+  .eyelet {
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 999px;
+    background: var(--ground);
+    box-shadow:
+      inset calc(var(--lx) * 0.35) calc(var(--ly) * 0.35) 3px var(--lo),
+      inset calc(var(--lx) * -0.35) calc(var(--ly) * -0.35) 3px var(--hi);
+  }
+
+  :root[data-phase="night"] .eyelet {
+    background: var(--well);
+  }
+
+  .num {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* Horizontal shelves on phones and wide screens alike: snap, no visible bar. */
+  /* The first item lines up with the page's container edge, and snapping keeps it there. */
+  .shelf {
+    --shelf-pad: max(clamp(1.25rem, 4.5vw, 2.75rem), calc((100vw - 78rem) / 2 + clamp(1.25rem, 4.5vw, 2.75rem)));
+    padding-inline: var(--shelf-pad);
+    scroll-padding-inline: var(--shelf-pad);
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .shelf::-webkit-scrollbar {
+    display: none;
+  }
+  .shelf > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* The flock lands: items glide in on a curved path, staggered, from an already-visible state. */
+@keyframes land {
+  from {
+    opacity: 0.25;
+    transform: translate(var(--fx, -18px), var(--fy, 22px)) rotate(var(--fr, -3deg));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.flock-armed > * {
+  opacity: 0.25;
+  transform: translate(var(--fx, -18px), var(--fy, 22px)) rotate(var(--fr, -3deg));
+}
+.flock-landed > * {
+  animation: land 760ms var(--ease-spring) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* A hanging tag sways a little when nobody is holding it. */
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .flock-armed > * {
+    opacity: 1;
+    transform: none;
+  }
+}

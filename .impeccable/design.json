@@ -1,0 +1,776 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T17:40:28.104Z",
+  "title": "Design System: Avian Trails",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Lichen Sage Ground",
+        "canonical": "oklch(92.5% 0.025 121.9)",
+        "tonalRamp": [
+          "oklch(15% 0.025 121.9)",
+          "oklch(25% 0.025 121.9)",
+          "oklch(35% 0.025 121.9)",
+          "oklch(45% 0.025 121.9)",
+          "oklch(55% 0.025 121.9)",
+          "oklch(68% 0.025 121.9)",
+          "oklch(82% 0.025 121.9)",
+          "oklch(95% 0.025 121.9)"
+        ],
+        "phases": {
+          "dawn": "#e6e7d9",
+          "day": "#e3e9d7",
+          "dusk": "#e6d9aa",
+          "night": "#172019 (surface #202b22)"
+        }
+      },
+      "well": {
+        "role": "neutral",
+        "displayName": "Pressed Well",
+        "canonical": "oklch(88.8% 0.031 123.3)",
+        "tonalRamp": [
+          "oklch(15% 0.030 123.3)",
+          "oklch(25% 0.031 123.3)",
+          "oklch(35% 0.031 123.3)",
+          "oklch(45% 0.031 123.3)",
+          "oklch(55% 0.031 123.3)",
+          "oklch(68% 0.031 123.3)",
+          "oklch(82% 0.031 123.3)",
+          "oklch(95% 0.030 123.3)"
+        ],
+        "phases": {
+          "dawn": "#d9dbca",
+          "day": "#d6dec8",
+          "dusk": "#dacb98",
+          "night": "#121a14"
+        }
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(84.9% 0.037 124.3)",
+        "tonalRamp": [
+          "oklch(15% 0.032 124.3)",
+          "oklch(25% 0.037 124.3)",
+          "oklch(35% 0.037 124.3)",
+          "oklch(45% 0.037 124.3)",
+          "oklch(55% 0.037 124.3)",
+          "oklch(68% 0.037 124.3)",
+          "oklch(82% 0.037 124.3)",
+          "oklch(95% 0.032 124.3)"
+        ],
+        "phases": {
+          "dawn": "#cfd1bd",
+          "day": "#c8d2b8",
+          "dusk": "#cdbd86",
+          "night": "#2c3a2e"
+        }
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(26.8% 0.031 142.9)",
+        "tonalRamp": [
+          "oklch(15% 0.030 142.9)",
+          "oklch(25% 0.031 142.9)",
+          "oklch(35% 0.031 142.9)",
+          "oklch(45% 0.031 142.9)",
+          "oklch(55% 0.031 142.9)",
+          "oklch(68% 0.031 142.9)",
+          "oklch(82% 0.031 142.9)",
+          "oklch(95% 0.030 142.9)"
+        ],
+        "phases": {
+          "night": "#e3e9d7"
+        }
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(43.0% 0.038 139.4)",
+        "tonalRamp": [
+          "oklch(15% 0.033 139.4)",
+          "oklch(25% 0.038 139.4)",
+          "oklch(35% 0.038 139.4)",
+          "oklch(45% 0.038 139.4)",
+          "oklch(55% 0.038 139.4)",
+          "oklch(68% 0.038 139.4)",
+          "oklch(82% 0.038 139.4)",
+          "oklch(95% 0.033 139.4)"
+        ],
+        "phases": {
+          "dusk": "#454c3a",
+          "night": "#b6c1a9"
+        }
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "oklch(44.9% 0.036 136.3)",
+        "tonalRamp": [
+          "oklch(15% 0.032 136.3)",
+          "oklch(25% 0.036 136.3)",
+          "oklch(35% 0.036 136.3)",
+          "oklch(45% 0.036 136.3)",
+          "oklch(55% 0.036 136.3)",
+          "oklch(68% 0.036 136.3)",
+          "oklch(82% 0.036 136.3)",
+          "oklch(95% 0.032 136.3)"
+        ],
+        "phases": {
+          "dusk": "#4a4f3e",
+          "night": "#95a188"
+        }
+      },
+      "moss": {
+        "role": "tertiary",
+        "displayName": "Moss",
+        "canonical": "oklch(39.9% 0.065 140.1)",
+        "tonalRamp": [
+          "oklch(15% 0.042 140.1)",
+          "oklch(25% 0.052 140.1)",
+          "oklch(35% 0.063 140.1)",
+          "oklch(45% 0.065 140.1)",
+          "oklch(55% 0.065 140.1)",
+          "oklch(68% 0.065 140.1)",
+          "oklch(82% 0.056 140.1)",
+          "oklch(95% 0.042 140.1)"
+        ],
+        "phases": {
+          "night": "#b9cf9f"
+        }
+      },
+      "grandala": {
+        "role": "primary",
+        "displayName": "Grandala Ultramarine",
+        "canonical": "oklch(48.0% 0.200 267.0)",
+        "tonalRamp": [
+          "oklch(15% 0.087 267.0)",
+          "oklch(25% 0.120 267.0)",
+          "oklch(35% 0.153 267.0)",
+          "oklch(45% 0.186 267.0)",
+          "oklch(55% 0.200 267.0)",
+          "oklch(68% 0.177 267.0)",
+          "oklch(82% 0.130 267.0)",
+          "oklch(95% 0.087 267.0)"
+        ],
+        "phases": {
+          "night": "#4d69e8"
+        }
+      },
+      "grandala-deep": {
+        "role": "primary",
+        "displayName": "Grandala Deep",
+        "canonical": "oklch(42.3% 0.180 266.8)",
+        "tonalRamp": [
+          "oklch(15% 0.080 266.8)",
+          "oklch(25% 0.110 266.8)",
+          "oklch(35% 0.140 266.8)",
+          "oklch(45% 0.170 266.8)",
+          "oklch(55% 0.180 266.8)",
+          "oklch(68% 0.161 266.8)",
+          "oklch(82% 0.119 266.8)",
+          "oklch(95% 0.080 266.8)"
+        ],
+        "phases": {
+          "night": "#3f5bd8"
+        }
+      },
+      "grandala-ink": {
+        "role": "primary",
+        "displayName": "Grandala Ink",
+        "canonical": "oklch(42.3% 0.180 266.8)",
+        "tonalRamp": [
+          "oklch(15% 0.080 266.8)",
+          "oklch(25% 0.110 266.8)",
+          "oklch(35% 0.140 266.8)",
+          "oklch(45% 0.170 266.8)",
+          "oklch(55% 0.180 266.8)",
+          "oklch(68% 0.161 266.8)",
+          "oklch(82% 0.119 266.8)",
+          "oklch(95% 0.080 266.8)"
+        ],
+        "phases": {
+          "night": "#9fb0ff"
+        }
+      },
+      "on-grandala": {
+        "role": "primary",
+        "displayName": "On Grandala",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(25% 0.000 89.9)",
+          "oklch(35% 0.000 89.9)",
+          "oklch(45% 0.000 89.9)",
+          "oklch(55% 0.000 89.9)",
+          "oklch(68% 0.000 89.9)",
+          "oklch(82% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ],
+        "phases": {
+          "night": "#ffffff"
+        }
+      },
+      "sunbird": {
+        "role": "secondary",
+        "displayName": "Fire-tailed Sunbird Flame",
+        "canonical": "oklch(55.9% 0.184 32.3)",
+        "tonalRamp": [
+          "oklch(15% 0.081 32.3)",
+          "oklch(25% 0.112 32.3)",
+          "oklch(35% 0.143 32.3)",
+          "oklch(45% 0.173 32.3)",
+          "oklch(55% 0.184 32.3)",
+          "oklch(68% 0.164 32.3)",
+          "oklch(82% 0.121 32.3)",
+          "oklch(95% 0.081 32.3)"
+        ],
+        "phases": {
+          "night": "#ff7a5a"
+        }
+      },
+      "on-sunbird": {
+        "role": "secondary",
+        "displayName": "On Sunbird",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(25% 0.000 89.9)",
+          "oklch(35% 0.000 89.9)",
+          "oklch(45% 0.000 89.9)",
+          "oklch(55% 0.000 89.9)",
+          "oklch(68% 0.000 89.9)",
+          "oklch(82% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ],
+        "phases": {
+          "night": "#1c100c"
+        }
+      },
+      "ochre": {
+        "role": "tertiary",
+        "displayName": "Hill Ochre",
+        "canonical": "oklch(60.5% 0.119 77.3)",
+        "tonalRamp": [
+          "oklch(15% 0.060 77.3)",
+          "oklch(25% 0.080 77.3)",
+          "oklch(35% 0.099 77.3)",
+          "oklch(45% 0.119 77.3)",
+          "oklch(55% 0.119 77.3)",
+          "oklch(68% 0.113 77.3)",
+          "oklch(82% 0.086 77.3)",
+          "oklch(95% 0.060 77.3)"
+        ],
+        "phases": {
+          "night": "#e0b155"
+        }
+      },
+      "seat": {
+        "role": "state",
+        "displayName": "Seat",
+        "canonical": "oklch(47.2% 0.114 142.7)",
+        "tonalRamp": [
+          "oklch(15% 0.058 142.7)",
+          "oklch(25% 0.077 142.7)",
+          "oklch(35% 0.096 142.7)",
+          "oklch(45% 0.114 142.7)",
+          "oklch(55% 0.114 142.7)",
+          "oklch(68% 0.109 142.7)",
+          "oklch(82% 0.083 142.7)",
+          "oklch(95% 0.058 142.7)"
+        ],
+        "phases": {
+          "night": "#a8d98f"
+        }
+      },
+      "seat-bg": {
+        "role": "state",
+        "displayName": "Seat Ground",
+        "canonical": "oklch(89.4% 0.048 129.6)",
+        "tonalRamp": [
+          "oklch(15% 0.036 129.6)",
+          "oklch(25% 0.044 129.6)",
+          "oklch(35% 0.048 129.6)",
+          "oklch(45% 0.048 129.6)",
+          "oklch(55% 0.048 129.6)",
+          "oklch(68% 0.048 129.6)",
+          "oklch(82% 0.046 129.6)",
+          "oklch(95% 0.036 129.6)"
+        ],
+        "phases": {
+          "night": "#213a22"
+        }
+      },
+      "wait": {
+        "role": "state",
+        "displayName": "Wait",
+        "canonical": "oklch(46.5% 0.096 72.0)",
+        "tonalRamp": [
+          "oklch(15% 0.052 72.0)",
+          "oklch(25% 0.068 72.0)",
+          "oklch(35% 0.084 72.0)",
+          "oklch(45% 0.096 72.0)",
+          "oklch(55% 0.096 72.0)",
+          "oklch(68% 0.095 72.0)",
+          "oklch(82% 0.073 72.0)",
+          "oklch(95% 0.052 72.0)"
+        ],
+        "phases": {
+          "night": "#f0c56a"
+        }
+      },
+      "wait-bg": {
+        "role": "state",
+        "displayName": "Wait Ground",
+        "canonical": "oklch(90.7% 0.054 88.4)",
+        "tonalRamp": [
+          "oklch(15% 0.038 88.4)",
+          "oklch(25% 0.047 88.4)",
+          "oklch(35% 0.054 88.4)",
+          "oklch(45% 0.054 88.4)",
+          "oklch(55% 0.054 88.4)",
+          "oklch(68% 0.054 88.4)",
+          "oklch(82% 0.050 88.4)",
+          "oklch(95% 0.038 88.4)"
+        ],
+        "phases": {
+          "night": "#3e3218"
+        }
+      },
+      "gone": {
+        "role": "state",
+        "displayName": "Gone",
+        "canonical": "oklch(49.2% 0.023 133.3)",
+        "tonalRamp": [
+          "oklch(15% 0.023 133.3)",
+          "oklch(25% 0.023 133.3)",
+          "oklch(35% 0.023 133.3)",
+          "oklch(45% 0.023 133.3)",
+          "oklch(55% 0.023 133.3)",
+          "oklch(68% 0.023 133.3)",
+          "oklch(82% 0.023 133.3)",
+          "oklch(95% 0.023 133.3)"
+        ],
+        "phases": {
+          "night": "#97a28c"
+        }
+      },
+      "alert": {
+        "role": "state",
+        "displayName": "Alert",
+        "canonical": "oklch(50.5% 0.168 31.7)",
+        "tonalRamp": [
+          "oklch(15% 0.076 31.7)",
+          "oklch(25% 0.104 31.7)",
+          "oklch(35% 0.132 31.7)",
+          "oklch(45% 0.160 31.7)",
+          "oklch(55% 0.168 31.7)",
+          "oklch(68% 0.151 31.7)",
+          "oklch(82% 0.112 31.7)",
+          "oklch(95% 0.076 31.7)"
+        ],
+        "phases": {
+          "night": "#ff8a70"
+        }
+      }
+    },
+    "circadian": {
+      "source": "src/components/soft/circadian.ts (inline head script, runs before paint)",
+      "phases": [
+        {
+          "id": "dawn",
+          "label": "Dawn chorus",
+          "from": "05:00",
+          "to": "08:00",
+          "previewAt": 6.5
+        },
+        {
+          "id": "day",
+          "label": "Daylight",
+          "from": "08:00",
+          "to": "16:30",
+          "previewAt": 12,
+          "default": true
+        },
+        {
+          "id": "dusk",
+          "label": "Golden hour",
+          "from": "16:30",
+          "to": "19:30",
+          "previewAt": 18
+        },
+        {
+          "id": "night",
+          "label": "Night",
+          "from": "19:30",
+          "to": "05:00",
+          "previewAt": 22
+        }
+      ],
+      "light": {
+        "theta": "PI * clamp((hour - 6) / 12, 0, 1)",
+        "lx": "cos(theta) * 7px (night: 3px)",
+        "ly": "max(sin(theta), 0.45) * 7px (night: 6px)",
+        "soft": "round(100 * (1 - sin(theta))) (night: 100)",
+        "defaults": {
+          "lx": "5px",
+          "ly": "7px",
+          "soft": 30
+        }
+      },
+      "phaseTokens": {
+        "dawn": {
+          "hi": "rgb(255 253 247 / 0.88)",
+          "lo": "rgb(118 108 88 / 0.28)",
+          "sky-a": "#f3cdb4",
+          "sky-b": "#d9d6ec",
+          "flock": "#3a3548"
+        },
+        "day": {
+          "hi": "rgb(255 255 255 / 0.82)",
+          "lo": "rgb(80 102 64 / 0.3)",
+          "sky-a": "#cfe0ee",
+          "sky-b": "#eef2e6",
+          "flock": "#28402a"
+        },
+        "dusk": {
+          "label": "golden grass",
+          "hi": "rgb(255 248 220 / 0.8)",
+          "lo": "rgb(122 92 30 / 0.32)",
+          "sky-a": "#f0b27a",
+          "sky-b": "#e8a3a0",
+          "flock": "#3b2a22"
+        },
+        "night": {
+          "surface": "#202b22",
+          "surface-hi": "#26322a",
+          "eyelet": "var(--well)",
+          "hi": "rgb(210 230 190 / 0.09)",
+          "lo": "rgb(0 0 0 / 0.55)",
+          "sky-a": "#0e1531",
+          "sky-b": "#1b2a3a",
+          "flock": "#dfe7d2",
+          "colorScheme": "dark"
+        }
+      },
+      "preview": "?phase=dawn|day|dusk|night; the circadian chip cycles phases and 'Now' returns to the clock"
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The home promise only; last words may go italic at SOFT 100, WONK 1."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page names (PageHead)."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Tag names, card heads, form heads; 1.15–1.6rem by context."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; 1.125rem from 48rem; weight 340 with +0.005em tracking at night."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "One lead sentence under a heading; 1.2rem from md; max 32–42rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, pebbles, nav, form labels."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Dates, tour numbers, captions in ink-3 with tabular lining numerals."
+      },
+      "badge": {
+        "displayName": "Badge",
+        "purpose": "Seat badges; the next-departure flag is 0.75rem 600."
+      }
+    },
+    "fonts": {
+      "serif": "Fraunces via next/font, axes SOFT, WONK, opsz, roman + italic; headings 560 with font-variation-settings 'SOFT' var(--soft), 'WONK' 0 and optical sizing auto",
+      "sans": "Lexend via next/font (variable)",
+      "shareCards": "static woffs: fraunces-600, lexend-400, lexend-500 (src/app/_og/fonts)"
+    },
+    "shadows": [
+      {
+        "name": "raised",
+        "value": "calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi), var(--lx) var(--ly) 20px var(--lo)",
+        "purpose": "Cards, tags, nav pill, hide window frame, forms."
+      },
+      {
+        "name": "inset",
+        "value": "inset var(--lx) var(--ly) 12px var(--lo), inset calc(var(--lx) * -1) calc(var(--ly) * -1) 12px var(--hi)",
+        "purpose": "Wells, fields, quotes, hide window, selected filters."
+      },
+      {
+        "name": "focus",
+        "value": "outline 2.5px solid var(--grandala); outline-offset 3px; no border-radius (follows the element)",
+        "purpose": "Keyboard focus on everything."
+      },
+      {
+        "name": "pebble",
+        "value": "calc(var(--lx) * -0.6) calc(var(--ly) * -0.6) 10px var(--hi), calc(var(--lx) * 0.6) calc(var(--ly) * 0.6) 12px var(--lo)",
+        "purpose": "Chips, icon buttons, secondary buttons."
+      },
+      {
+        "name": "action",
+        "value": "calc(var(--lx) * -0.6) calc(var(--ly) * -0.6) 12px var(--hi), calc(var(--lx) * 0.8) calc(var(--ly) * 0.8) 18px color-mix(in oklab, var(--grandala) 45%, transparent)",
+        "purpose": "The Grandala action pebble only."
+      },
+      {
+        "name": "bezel",
+        "value": "calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi), var(--lx) var(--ly) 22px var(--lo)",
+        "purpose": "Moulded photo frame (0.5rem padding)."
+      },
+      {
+        "name": "eyelet",
+        "value": "inset calc(var(--lx) * 0.35) calc(var(--ly) * 0.35) 3px var(--lo), inset calc(var(--lx) * -0.35) calc(var(--ly) * -0.35) 3px var(--hi)",
+        "purpose": "Punched hole on a specimen tag (0.9rem)."
+      },
+      {
+        "name": "current",
+        "value": "inset 2px 2px 5px var(--lo), inset -2px -2px 5px var(--hi)",
+        "purpose": "Active nav link; checked radio pebble (6px blur)."
+      },
+      {
+        "name": "badge-press",
+        "value": "inset 1px 1px 3px rgb(0 0 0 / 0.12)",
+        "purpose": "Seat badge pressed into the tag."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-spring",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "Intentional overshoot for physical motion: press, arrows, landings, menu drop, phase icon, logo bird."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Colour, shadow, background and photo zoom."
+      },
+      {
+        "name": "press",
+        "value": "hover translateY(-2px); active translateY(1px) scale(0.975) at 90ms; transform 360ms spring, box-shadow 240ms out, background 200ms out",
+        "purpose": "Every pressable."
+      },
+      {
+        "name": "land",
+        "value": "from opacity 0.25 translate(--fx,--fy) rotate(--fr) to none; 760ms spring; delay --i * 70ms (i mod 8 in FlockIn)",
+        "purpose": "Flock landing for lists below the fold and re-filtered boards."
+      },
+      {
+        "name": "sway",
+        "value": "rotate -1.6deg to 1.6deg, 4.8s ease-in-out infinite",
+        "purpose": "Pull tag at rest."
+      },
+      {
+        "name": "pull-tag",
+        "value": "rest string 46px; opens at 78px tug; damped spring (damping 0.8) back on early release; mouse/pen tug anywhere, touch tugs only from the 44px eyelet grip (data-grip, touch-action none) so the face scrolls the page",
+        "purpose": "Elastic WhatsApp tag."
+      },
+      {
+        "name": "shelf",
+        "value": "padding-inline and scroll-padding-inline = --shelf-pad = max(clamp(1.25rem,4.5vw,2.75rem), calc((100vw - 78rem)/2 + clamp(1.25rem,4.5vw,2.75rem))) so the first item aligns with the container edge; mouse drag with rubber-band stretch past either end, spring back; native scroll on touch; scroll-snap x mandatory",
+        "purpose": "Departure tag shelf."
+      },
+      {
+        "name": "flock",
+        "value": "64 boids (separation, alignment, cohesion), full size on phones; wander target in the open upper sky at x 0.36±0.24, y 0.22±0.10 of the window; parting around the pointer; colour var(--flock); paused off-screen",
+        "purpose": "Hide window sky."
+      },
+      {
+        "name": "phase-change",
+        "value": "html background-color 600ms ease-out",
+        "purpose": "Ground follows the phase."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all animation and transition durations 0.01ms; flock drawn once still; no sway, pull stretch or landing; armed items shown at rest",
+        "purpose": "Stillness."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "26rem"
+      },
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "xl",
+        "value": "80rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Action Button (WhatsApp)",
+      "kind": "button",
+      "refersTo": "button-action",
+      "description": "The single action: a Grandala pebble that opens WhatsApp with the message written.",
+      "html": "<a class=\"ds-action\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"/></svg><span>Reserve on WhatsApp</span></a>",
+      "css": ".ds-action{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;background:var(--grandala,#2c4dcc);color:var(--on-grandala,#fff);font-family:var(--font-lexend),Lexend,system-ui,sans-serif;font-size:1rem;font-weight:500;text-decoration:none;box-shadow:calc(var(--lx,5px)*-0.6) calc(var(--ly,7px)*-0.6) 12px var(--hi,rgb(255 255 255/.82)),calc(var(--lx,5px)*0.8) calc(var(--ly,7px)*0.8) 18px color-mix(in oklab,var(--grandala,#2c4dcc) 45%,transparent);transition:transform 360ms cubic-bezier(0.34,1.56,0.64,1),box-shadow 240ms cubic-bezier(0.22,1,0.36,1),background-color 200ms cubic-bezier(0.22,1,0.36,1)}.ds-action:hover{background:var(--grandala-deep,#223fae);transform:translateY(-2px)}.ds-action:active{transform:translateY(1px) scale(0.975);transition-duration:90ms}.ds-action:focus-visible{outline:2.5px solid var(--grandala,#2c4dcc);outline-offset:3px}"
+    },
+    {
+      "name": "Pebble Button",
+      "kind": "button",
+      "refersTo": "button-pebble",
+      "description": "The quieter choice beside the action: a raised ground pebble with a springing arrow.",
+      "html": "<a class=\"ds-pebble\" href=\"#\">See departures<svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-pebble{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 24px;border-radius:999px;background:var(--surface,#e3e9d7);color:var(--ink,#1d2a1c);font-family:var(--font-lexend),Lexend,system-ui,sans-serif;font-size:1rem;font-weight:500;text-decoration:none;box-shadow:calc(var(--lx,5px)*-0.6) calc(var(--ly,7px)*-0.6) 10px var(--hi,rgb(255 255 255/.82)),calc(var(--lx,5px)*0.6) calc(var(--ly,7px)*0.6) 12px var(--lo,rgb(80 102 64/.3));transition:transform 360ms cubic-bezier(0.34,1.56,0.64,1)}.ds-pebble svg{transition:transform 300ms cubic-bezier(0.34,1.56,0.64,1)}.ds-pebble:hover{transform:translateY(-2px)}.ds-pebble:hover svg{transform:translateX(4px)}.ds-pebble:active{transform:translateY(1px) scale(0.975);transition-duration:90ms}.ds-pebble:focus-visible{outline:2.5px solid var(--grandala,#2c4dcc);outline-offset:3px}"
+    },
+    {
+      "name": "Filter Pebbles",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Region or year filters: raised when off, pressed in and blue when chosen.",
+      "html": "<div class=\"ds-filters\"><button class=\"ds-chip\" aria-pressed=\"true\">All <span>24</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Himalaya <span>9</span></button></div>",
+      "css": ".ds-filters{display:flex;gap:12px;flex-wrap:wrap}.ds-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:0;border-radius:999px;font-family:var(--font-lexend),Lexend,system-ui,sans-serif;font-size:0.95rem;cursor:pointer;background:var(--surface,#e3e9d7);color:var(--ink-2,#455541);box-shadow:calc(var(--lx,5px)*-0.6) calc(var(--ly,7px)*-0.6) 10px var(--hi,rgb(255 255 255/.82)),calc(var(--lx,5px)*0.6) calc(var(--ly,7px)*0.6) 12px var(--lo,rgb(80 102 64/.3));transition:transform 360ms cubic-bezier(0.34,1.56,0.64,1)}.ds-chip span{font-size:0.82rem;color:var(--ink-3,#4c5a46);font-variant-numeric:lining-nums tabular-nums}.ds-chip:hover{color:var(--ink,#1d2a1c);transform:translateY(-2px)}.ds-chip[aria-pressed=true]{background:var(--well,#d6dec8);color:var(--grandala-ink,#223fae);font-weight:500;box-shadow:inset var(--lx,5px) var(--ly,7px) 12px var(--lo,rgb(80 102 64/.3)),inset calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 12px var(--hi,rgb(255 255 255/.82))}.ds-chip[aria-pressed=true] span{color:var(--grandala-ink,#223fae)}.ds-chip:focus-visible{outline:2.5px solid var(--grandala,#2c4dcc);outline-offset:3px}"
+    },
+    {
+      "name": "Departure Tag",
+      "kind": "card",
+      "refersTo": "card-soft",
+      "description": "Signature specimen tag: eyelet, tour number, Fraunces name, dates, seat badge; the next one wears the flame.",
+      "html": "<a class=\"ds-tag\" href=\"#\"><span class=\"ds-tag-top\"><span class=\"ds-eyelet\"></span><span class=\"ds-flag\">Next departure</span></span><span class=\"ds-tag-no\">Tour 01</span><span class=\"ds-tag-name\">Sikkim in Spring</span><span class=\"ds-tag-dates\">12–24 Mar 2026 · 13 days</span><span class=\"ds-seat\"><i></i>3 seats left</span></a>",
+      "css": ".ds-tag{display:flex;flex-direction:column;gap:10px;width:16rem;padding:20px;border-radius:1.5rem;background:var(--surface,#e3e9d7);color:var(--ink,#1d2a1c);text-decoration:none;font-family:var(--font-lexend),Lexend,system-ui,sans-serif;box-shadow:calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 18px var(--hi,rgb(255 255 255/.82)),var(--lx,5px) var(--ly,7px) 20px var(--lo,rgb(80 102 64/.3));transition:transform 360ms cubic-bezier(0.34,1.56,0.64,1)}.ds-tag:hover{transform:translateY(-2px) rotate(-0.6deg)}.ds-tag:focus-visible{outline:2.5px solid var(--grandala,#2c4dcc);outline-offset:3px}.ds-tag-top{display:flex;justify-content:space-between;align-items:center}.ds-eyelet{width:0.9rem;height:0.9rem;border-radius:999px;background:var(--ground,#e3e9d7);box-shadow:inset calc(var(--lx,5px)*.35) calc(var(--ly,7px)*.35) 3px var(--lo,rgb(80 102 64/.3)),inset calc(var(--lx,5px)*-.35) calc(var(--ly,7px)*-.35) 3px var(--hi,rgb(255 255 255/.82))}.ds-flag{border-radius:999px;background:var(--sunbird,#c93a21);color:var(--on-sunbird,#fff);padding:2px 10px;font-size:0.75rem;font-weight:600}.ds-tag-no{margin-top:4px;font-size:0.85rem;color:var(--ink-3,#4c5a46);font-variant-numeric:lining-nums tabular-nums}.ds-tag-name{font-family:var(--font-fraunces),Fraunces,Georgia,serif;font-variation-settings:'SOFT' var(--soft,30),'WONK' 0;font-weight:600;font-size:1.45rem;line-height:1.12}.ds-tag-dates{font-size:0.95rem;color:var(--ink-2,#455541);font-variant-numeric:lining-nums tabular-nums}.ds-seat{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--seat-bg,#d2e3c2);color:var(--seat,#2f6b2c);font-size:0.82rem;font-weight:500;box-shadow:inset 1px 1px 3px rgb(0 0 0/.12)}.ds-seat i{width:6px;height:6px;border-radius:999px;background:currentColor}"
+    },
+    {
+      "name": "Seat Badges",
+      "kind": "chip",
+      "refersTo": "badge-seat",
+      "description": "State in words, pressed into the tag; colour is for state only.",
+      "html": "<div class=\"ds-badges\"><span class=\"ds-b ds-b-seat\"><i></i>3 seats left</span><span class=\"ds-b ds-b-wait\"><i></i>Waitlist</span><span class=\"ds-b ds-b-on\"><i></i>On tour now</span><span class=\"ds-b ds-b-gone\"><i></i>Departed</span></div>",
+      "css": ".ds-badges{display:flex;gap:10px;flex-wrap:wrap}.ds-b{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;font-family:var(--font-lexend),Lexend,system-ui,sans-serif;font-size:0.82rem;font-weight:500;line-height:1.25;box-shadow:inset 1px 1px 3px rgb(0 0 0/.12)}.ds-b i{width:6px;height:6px;border-radius:999px;background:currentColor}.ds-b-seat{background:var(--seat-bg,#d2e3c2);color:var(--seat,#2f6b2c)}.ds-b-wait{background:var(--wait-bg,#efdfb8);color:var(--wait,#7a4f08)}.ds-b-on{background:var(--ink,#1d2a1c);color:var(--ground,#e3e9d7)}.ds-b-gone{background:var(--well,#d6dec8);color:var(--gone,#5c6457)}"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "A pressed well with the label above; Grandala outline on focus, alert outline when invalid.",
+      "html": "<label class=\"ds-field\"><span>Your name</span><input placeholder=\"Name\" /></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:8px;font-family:var(--font-lexend),Lexend,system-ui,sans-serif}.ds-field span{padding:0 4px;font-size:0.92rem;font-weight:500;color:var(--ink-2,#455541)}.ds-field input{min-height:52px;padding:12px 16px;border:0;border-radius:1rem;background:var(--well,#d6dec8);color:var(--ink,#1d2a1c);font:inherit;font-size:1rem;box-shadow:inset var(--lx,5px) var(--ly,7px) 12px var(--lo,rgb(80 102 64/.3)),inset calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 12px var(--hi,rgb(255 255 255/.82))}.ds-field input::placeholder{color:var(--ink-3,#4c5a46)}.ds-field input:focus{outline:2px solid var(--grandala,#2c4dcc);outline-offset:2px}.ds-field input[aria-invalid=true]{outline:2px solid var(--alert,#b0301c)}"
+    },
+    {
+      "name": "Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Floating raised pill; the current link is pressed in; the WhatsApp action at the end.",
+      "html": "<nav class=\"ds-nav\"><strong>Avian Trails</strong><a href=\"#\" aria-current=\"page\">Departures</a><a href=\"#\">Custom tours</a><a href=\"#\">Lodges</a><a class=\"ds-nav-act\" href=\"#\">WhatsApp</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:64px;padding:0 8px 0 24px;border-radius:999px;background:var(--surface,#e3e9d7);font-family:var(--font-lexend),Lexend,system-ui,sans-serif;box-shadow:calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 18px var(--hi,rgb(255 255 255/.82)),var(--lx,5px) var(--ly,7px) 20px var(--lo,rgb(80 102 64/.3))}.ds-nav strong{font-family:var(--font-fraunces),Fraunces,Georgia,serif;font-weight:560;margin-right:auto;color:var(--ink,#1d2a1c)}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;font-size:0.95rem;color:var(--ink-2,#455541);text-decoration:none;transition:color 200ms}.ds-nav a:hover{color:var(--ink,#1d2a1c)}.ds-nav a[aria-current=page]{color:var(--ink,#1d2a1c);font-weight:500;box-shadow:inset 2px 2px 5px var(--lo,rgb(80 102 64/.3)),inset -2px -2px 5px var(--hi,rgb(255 255 255/.82))}.ds-nav a:focus-visible{outline:2.5px solid var(--grandala,#2c4dcc);outline-offset:3px}.ds-nav .ds-nav-act{min-height:48px;margin-left:8px;padding:0 20px;background:var(--grandala,#2c4dcc);color:var(--on-grandala,#fff);font-weight:500}.ds-nav .ds-nav-act:hover{background:var(--grandala-deep,#223fae);color:var(--on-grandala,#fff)}"
+    },
+    {
+      "name": "Hide Window",
+      "kind": "custom",
+      "refersTo": "card-soft",
+      "description": "Signature: an inset slot with the hour's sky (where the Flock canvas runs) inside a raised 2.4rem frame, a bezelled photo pinned over it.",
+      "html": "<div class=\"ds-hide\"><div class=\"ds-sky\"><figure class=\"ds-bezel\"><div class=\"ds-photo\"></div><figcaption>Grandalas · Lachen · Mar 2019</figcaption></figure></div></div>",
+      "css": ".ds-hide{padding:16px;border-radius:2.4rem;background:var(--surface,#e3e9d7);box-shadow:calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 18px var(--hi,rgb(255 255 255/.82)),var(--lx,5px) var(--ly,7px) 20px var(--lo,rgb(80 102 64/.3))}.ds-sky{position:relative;aspect-ratio:5/4;border-radius:1.9rem;overflow:hidden;background:linear-gradient(170deg,var(--sky-a,#cfe0ee),var(--sky-b,#eef2e6));box-shadow:inset var(--lx,5px) var(--ly,7px) 12px var(--lo,rgb(80 102 64/.3)),inset calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 12px var(--hi,rgb(255 255 255/.82))}.ds-bezel{position:absolute;left:5%;bottom:7%;width:58%;margin:0;padding:8px;border-radius:1.75rem;background:var(--surface,#e3e9d7);transform:rotate(-3deg);transition:transform 500ms cubic-bezier(0.34,1.56,0.64,1);box-shadow:calc(var(--lx,5px)*-1) calc(var(--ly,7px)*-1) 18px var(--hi,rgb(255 255 255/.82)),var(--lx,5px) var(--ly,7px) 22px var(--lo,rgb(80 102 64/.3))}.ds-bezel:hover{transform:rotate(-1deg)}.ds-photo{aspect-ratio:3/2;border-radius:1.1rem;background:var(--well,#d6dec8)}.ds-bezel figcaption{padding:6px 6px 2px;font-family:var(--font-lexend),Lexend,system-ui,sans-serif;font-size:0.78rem;color:var(--ink-3,#4c5a46)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bird Hide at First Light",
+    "overview": "The site is a hide: soft, tactile and moulded out of one flora ground. Its window shows the sky of the visitor's own hour with a live flock crossing it, and everything else is pinned inside as specimen tags, pebble buttons and bezelled photographs. Surfaces are not drawn, they are pressed out of the ground (raised) or into it (inset), and the light that shapes them comes from the real sun position of the visitor's local time.\n\nThe page follows the clock. Four circadian phases (dawn 05:00–08:00, day 08:00–16:30, dusk 16:30–19:30, night 19:30–05:00) swap the ground, sky and flock colours; between them the sun's angle continuously sets the shadow offset (--lx, --ly) and the softness of the headings (--soft). An inline head script sets all of it before first paint, so the page never flashes the wrong light; ?phase=dawn|day|dusk|night previews a phase and the circadian chip cycles through them. Day is the default and the phase the share cards are drawn in.\n\nThe system refuses the stock tour-operator page and flat glassy SaaS softness. It must never read as \"a generic travel agency (stock 'Book Now' banners, icon rows, package cards), luxury-safari gloss (dark/gold/moody 'exclusive'), a cold white photo portfolio that doesn't sell trips or show the people, or a pretty site where upcoming dates and seats are hard to find.\" Pages are short and low in cognitive load: one promise, one action, one line of proof.\n\nLayout is a single centred container (78rem max, gutter clamp(1.25rem, 4.5vw, 2.75rem)), sections spaced 5rem apart on phones and 7rem from md, card grids at 1rem gaps on phones and 1.5rem from sm. The nav is a floating soft pill, sticky 12–16px from the top. Every tap target is at least 44px tall; primary actions are 52px.\n\nMotion is spring-led on purpose: the owner asked for an elastic pull and a flock landing, so overshoot (--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) is the house easing for anything physical. Everything moves from a visible default state and everything is still under reduced motion.\n\n",
+    "keyCharacteristics": [
+      "One flora ground per phase; surfaces are raised or inset from it, never a different colour card on top.",
+      "Shadows cast from the computed sun position, never a fixed top-left light.",
+      "Plumage-only accents: Grandala ultramarine for the action, Sunbird flame for the next departure.",
+      "Fraunces headings whose SOFT axis follows the hour; Lexend body that thins at night.",
+      "Pebbles, specimen tags with eyelets, bezelled photos, a hide window with a live boids flock.",
+      "Springs with overshoot for physical motion; staggered \"flock\" landings; stillness under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Action Rule",
+        "body": "Grandala blue means \"do this\". It is never decoration, never a heading colour, never a background panel. When a chosen option is pressed into a well, its text takes the action's text form, grandala-ink, never raw grandala.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Flame Rule",
+        "body": "Sunbird flame marks the single next departure. One flag per view; no other element may wear it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plumage Rule",
+        "body": "Every accent is a real bird's colour. No new hue enters without a bird behind it.",
+        "section": "colors"
+      },
+      {
+        "name": "The State in Words Rule",
+        "body": "Seat colours always travel with the words (\"3 seats left\", \"Waitlist\") and a dot; colour is never the only signal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hour-Soft Rule",
+        "body": "Fraunces headings run font-variation-settings: \"SOFT\" var(--soft), \"WONK\" 0. --soft is 100 × (1 − sin θ) of the sun angle: crisp at noon, rounded at dawn and dusk, fully soft (100) at night. Never hard-code SOFT on a heading except the one italic flourish in the hero.",
+        "section": "typography"
+      },
+      {
+        "name": "The Night Thinning Rule",
+        "body": "Lexend body is weight 380 by day and 340 at night with +0.005em tracking, because light text on the moss night ground blooms.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Numbers Rule",
+        "body": "Every date, count, seat number and tour number uses lining tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "No uppercase labels and no tracked-out small caps anywhere; there are no kickers above headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sun-Cast Rule",
+        "body": "Every shadow reads --lx/--ly. A shadow with fixed pixel offsets is a defect.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Same-Ground Rule",
+        "body": "Raised and inset surfaces share the ground colour (inset uses well). If a card needs a different fill to be seen, the shadow is wrong.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do derive every shadow from --lx/--ly/--hi/--lo so it follows the sun and the phase.",
+      "Do keep Grandala ultramarine for the action (and grandala-ink for chosen options pressed into a well) and Sunbird flame for the single next departure.",
+      "Do set headings in Fraunces with \"SOFT\" var(--soft) and body in Lexend 380 (340 at night).",
+      "Do use --ease-spring for physical motion (press, pull, land, arrows) and --ease-out for colour, shadow and photo zoom.",
+      "Do start every animation from a visible state and make reduced motion fully still: no sway, no flock flight, no landing.",
+      "Do keep tap targets 44px minimum and primary actions 52px.",
+      "Do write seat state in words next to its colour, with the date the seats are as of."
+    ],
+    "donts": [
+      "Don't read as \"a generic travel agency (stock 'Book Now' banners, icon rows, package cards)\".",
+      "Don't drift into \"luxury-safari gloss (dark/gold/moody 'exclusive')\"; night is moss green, not black and gold.",
+      "Don't become \"a cold white photo portfolio that doesn't sell trips or show the people\".",
+      "Don't make \"upcoming dates and seats … hard to find\".",
+      "Don't use flat glassy SaaS softness: no glassmorphism, no backdrop blur, no gradient buttons.",
+      "Don't add borders or hairline outlines to soft surfaces, or give a card a fill different from the ground to separate it.",
+      "Don't use a fixed top-left light or a grey drop shadow with hard-coded offsets.",
+      "Don't add uppercase kickers or eyebrow labels above headings.",
+      "Don't use Sunbird flame, ochre or seat colours for decoration, or add any accent hue without a bird behind it.",
+      "Don't use stock or AI-generated imagery of birds, people or places."
+    ]
+  }
+}
