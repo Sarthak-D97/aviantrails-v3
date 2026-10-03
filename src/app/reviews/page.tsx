@@ -18,12 +18,13 @@ export default function ReviewsPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "group-kenya-samburu", caption: "An Avian Trails group · Kenya · Oct 2024", position: "50% 40%" }}
         name="Guest words"
         note={`${reviews.length} guests, in their own words`}
         lead="Written by guests for the old website between 2016 and 2020, quoted as they wrote them, trimmed where marked. The misses stayed in."
       />
 
-      <section className="container-x pt-8 md:pt-10">
+      <section className="container-x pt-12 md:pt-16">
         <FlockIn as="ol" className="columns-1 gap-6 lg:columns-2 [&>li]:mb-6 [&>li]:break-inside-avoid">
           {guide.map((r) => (
             <li key={r.name}>
@@ -47,7 +48,8 @@ export default function ReviewsPage() {
         </FlockIn>
       </section>
 
-      <section aria-labelledby="camp" className="container-x pt-16 md:pt-24">
+      <section aria-labelledby="camp" className="band band-warm">
+        <div className="container-x">
         <SectionTitle id="camp">Before the lodge: Camp Milieu</SectionTitle>
         <p className="mt-3 max-w-2xl text-ink-2">
           In 2016–17, before Milieu Villa, the family ran Camp Milieu near Chhoti Haldwani: four mud huts, a feeder, a studio and home-cooked food.
@@ -74,9 +76,10 @@ export default function ReviewsPage() {
             </li>
           ))}
         </ol>
+        </div>
       </section>
 
-      <section className="container-x pt-16 pb-20 md:pt-24 md:pb-28">
+      <section className="container-x pt-16 md:pt-24">
         <div className="soft grid gap-8 p-4 sm:p-8 lg:grid-cols-12 lg:items-center">
           <div className="grid grid-cols-2 gap-4 lg:col-span-7">
             <Photo slug="group-road-2020" ratio={4 / 3} bezel={false} sizes="(min-width: 1024px) 28vw, 45vw" caption="A group on the road · 2020" alt="An Avian Trails group on a mountain road" />

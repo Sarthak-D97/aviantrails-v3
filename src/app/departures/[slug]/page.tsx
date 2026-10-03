@@ -10,6 +10,7 @@ import { ReservationForm } from "@/components/soft/ReservationForm";
 import { SeatBadge } from "@/components/soft/SeatBadge";
 import { Shelf } from "@/components/soft/Shelf";
 import { journeyOptions, toTag } from "@/content/board";
+import { photoSizes } from "@/content/photo-sizes";
 import { reports } from "@/content/reports";
 import { site } from "@/content/site";
 import { dateRange, days, enquiryText, seatStatus, seatsAsOnLabel, tourBySlug, tours, upcoming } from "@/content/tours";
@@ -44,6 +45,11 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   const isNext = ahead[0]?.slug === t.slug;
   const others = ahead.filter((o) => o.slug !== t.slug);
   const field = reports.filter((r) => r.tour === t.slug);
+  // A banner needs a wide, sharp photograph; tours whose best frames are upright keep the plain band.
+  const bannerShot = t.shots.find((s) => {
+    const [w, h] = photoSizes[s.slug];
+    return w >= 1280 && w / h >= 1.3;
+  });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -83,6 +89,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
 
       <PageHead
+        photo={bannerShot ? { slug: bannerShot.slug, caption: bannerShot.caption, position: "50% 42%" } : undefined}
         badge={badge}
         name={t.name}
         note={
@@ -94,7 +101,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
         }
       />
 
-      <section className="container-x grid gap-10 pt-8 md:pt-10 lg:grid-cols-12 lg:gap-14">
+      <section className="container-x grid gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-6">
           <p className="serif text-[clamp(1.35rem,2.3vw,1.75rem)] leading-[1.3] font-medium">{t.summary}</p>
           <dl className="soft-in mt-8 grid grid-cols-2 gap-x-6 gap-y-5 p-5 sm:p-6">
@@ -148,7 +155,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       </section>
 
       {rest.length > 0 || t.clip ? (
-        <section aria-labelledby="frames" className="pt-16 md:pt-24">
+        <section aria-labelledby="frames" className="band band-deep">
           <div className="container-x">
             <SectionTitle id="frames">From Rajesh&apos;s camera</SectionTitle>
           </div>
@@ -199,7 +206,6 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
           </Shelf>
         </section>
       ) : null}
-      <div className="pb-20 md:pb-28" />
     </>
   );
 }

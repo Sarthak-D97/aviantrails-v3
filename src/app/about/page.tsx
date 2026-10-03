@@ -42,9 +42,10 @@ const partners = [
 export default function AboutPage() {
   return (
     <>
-      <PageHead name="Rajesh & Sheela" note="Chhoti Haldwani, Kaladhungi · birding since 2013" />
+      <PageHead
+        photo={{ slug: "group-road-2020", caption: "A group on the road · 2020", position: "50% 35%" }} name="Rajesh & Sheela" note="Chhoti Haldwani, Kaladhungi · birding since 2013" />
 
-      <section className="container-x grid gap-10 pt-8 md:pt-10 lg:grid-cols-12 lg:gap-14">
+      <section className="container-x grid gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-5">
           <Photo slug="rajesh-sheela" ratio={1} priority sizes="(min-width: 1024px) 38vw, 100vw" alt="Rajesh and Sheela Panwar at home" caption="Rajesh and Sheela Panwar, at home" />
         </div>
@@ -80,7 +81,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="record" className="pt-16 md:pt-24">
+      <section aria-labelledby="record" className="band band-warm">
         <div className="container-x">
           <SectionTitle id="record">The record, season by season</SectionTitle>
           <p className="mt-3 max-w-2xl text-ink-2">From Rajesh&apos;s own year-end posts and his eBird profile, the closest thing birding has to a public ledger.</p>
@@ -156,7 +157,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="groups" className="pt-16 md:pt-24">
+      <section aria-labelledby="groups" className="band band-deep">
         <div className="container-x">
           <SectionTitle id="groups">With the groups</SectionTitle>
         </div>
@@ -167,7 +168,7 @@ export default function AboutPage() {
         </Shelf>
       </section>
 
-      <section aria-labelledby="partners" className="container-x pt-12 pb-20 md:pb-28">
+      <section aria-labelledby="partners" className="container-x pt-12">
         <div className="soft-in p-5 sm:p-7">
           <h3 id="partners" className="text-[1.35rem]">
             Local partners Rajesh credits

@@ -3,7 +3,7 @@ import { Flock } from "@/components/soft/Flock";
 
 export default function NotFound() {
   return (
-    <section className="container-x grid items-center gap-10 pt-10 pb-20 md:pt-16 md:pb-28 lg:grid-cols-2">
+    <section className="container-x grid items-center gap-10 pt-10 md:pt-16 lg:grid-cols-2">
       <div>
         <h1 className="text-[clamp(2.4rem,6vw,4.4rem)] leading-[1.02]">Page not found</h1>
         <p className="mt-5 max-w-xl text-[1.12rem] text-ink-2 md:text-[1.2rem]">

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Lexend } from "next/font/google";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
+import { TopBar } from "@/components/site/TopBar";
 import { Preloader } from "@/components/soft/Preloader";
 import { circadianScript } from "@/components/soft/circadian";
 import { indexable, origin, site } from "@/content/site";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="flex min-h-dvh flex-col">
         <Preloader />
+        <TopBar />
         <Header />
         <main id="main" className="flex-1 overflow-x-clip">
           {children}

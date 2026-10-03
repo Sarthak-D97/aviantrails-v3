@@ -1,21 +1,23 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink, Quote } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { altFromCaption, Photo } from "@/components/media/Photo";
-import { ButtonLink, TextLink, WhatsAppButton } from "@/components/site/Actions";
+import { TextLink, WhatsAppButton } from "@/components/site/Actions";
+import { Faq, type QA } from "@/components/site/Faq";
 import { SectionTitle } from "@/components/site/PageHead";
-import { CircadianChip } from "@/components/soft/CircadianChip";
+import { PhaseHero } from "@/components/site/PhaseHero";
 import { DepartureTag } from "@/components/soft/DepartureTag";
-import { Flock } from "@/components/soft/Flock";
 import { FlockIn } from "@/components/soft/FlockIn";
 import { PullTag } from "@/components/soft/PullTag";
 import { Shelf } from "@/components/soft/Shelf";
 import { toTag } from "@/content/board";
+import { lines as destinations } from "@/content/destinations";
 import { lodges } from "@/content/lodges";
 import type { PhotoSlug } from "@/content/photo-sizes";
+import { reports } from "@/content/reports";
 import { reviews } from "@/content/reviews";
 import { record, site, whatsappLink } from "@/content/site";
-import { seatsAsOnLabel, upcoming } from "@/content/tours";
+import { seatsAsOnLabel, tours, upcoming } from "@/content/tours";
 
 // Rebuilt daily so seat states (departed, on tour) follow the calendar.
 export const revalidate = 86400;
@@ -76,6 +78,60 @@ export default function Home() {
   const next = upcoming(now);
   const tags = next.map((t) => toTag(t, now));
   const quote = reviews[0];
+  const words = reviews.filter((r) => !r.camp && r.name !== quote.name).slice(0, 3);
+  const latest = reports.slice(0, 3);
+  const places = destinations.reduce((n, l) => n + l.stations.length, 0);
+  const countries = destinations.find((l) => l.id === "abroad")?.stations.length ?? 0;
+
+  const stats: { value: string; label: string; tone: string }[] = [
+    { value: "#1", label: "eBirder in India, 2019 and 2021", tone: "text-grandala-ink" },
+    { value: record.worldSpecies.toLocaleString("en-IN"), label: "species on Rajesh's world list", tone: "text-tragopan" },
+    { value: String(tours.length), label: `departures on the ${site.seasonLabel} calendar`, tone: "text-teal" },
+    { value: String(record.countries2025), label: "countries with our groups in 2025", tone: "text-plum" },
+  ];
+
+  const faq: QA[] = [
+    {
+      q: "How do I book a seat?",
+      a: (
+        <>
+          Send the tour number to Rajesh on WhatsApp ({site.whatsapp.display}), or fill in the{" "}
+          <Link href="/enquiry" className="font-medium text-ink">
+            enquiry form
+          </Link>
+          . He replies with the day-by-day itinerary and the cost.
+        </>
+      ),
+    },
+    { q: "Why are prices not on the website?", a: "Rajesh shares the cost together with the day-by-day itinerary on WhatsApp, for any departure you ask about." },
+    {
+      q: "Who leads the tours?",
+      a: "Rajesh Panwar leads the group departures himself; he is the team leader on every tour poster. Sheela co-guides some trips, and local birding guides join on many routes, such as Irfan Jeelani and Ansar Ahmad in Kashmir.",
+    },
+    { q: "How big are the groups?", a: "Small. The Ladakh group in September 2026 had eight participants. Ask Rajesh about the size of the departure you have in mind." },
+    {
+      q: "Are the tours for birders or for photographers?",
+      a: "Both. Each departure is labelled birding, bird photography or wildlife photography, and the enquiry form asks which you are coming for. Rajesh himself shoots Nikon mirrorless bodies with long lenses.",
+    },
+    {
+      q: "Can you plan a private trip on my dates?",
+      a: (
+        <>
+          Yes. Custom tours run to {places} places across India and {countries} countries, planned around your dates and target birds.{" "}
+          <Link href="/custom-tours" className="font-medium text-ink">
+            See where we go
+          </Link>
+          .
+        </>
+      ),
+    },
+    { q: "What if a departure is full?", a: "Waitlisted seats do reopen, and most routes also run as custom trips. Ask on WhatsApp either way." },
+    { q: "How current are the seat counts?", a: `They are as on ${seatsAsOnLabel}, from Rajesh's ${site.seasonLabel} poster. Always confirm on WhatsApp before you plan travel.` },
+    {
+      q: "Can I stay at a lodge without joining a tour?",
+      a: "Yes, ask Rajesh for dates. Milieu Villa is 255 km by road from Delhi, about six hours; Manila is 80 km from Ramnagar station, with pick-up arranged.",
+    },
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -102,64 +158,42 @@ export default function Home() {
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
     sameAs: [site.social.instagram, site.social.youtube, site.social.facebook, site.social.x],
   };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq
+      .filter((f) => typeof f.a === "string")
+      .map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a as string } })),
+  };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }} />
 
-      {/* The hide: the promise on one side, the window on the other. */}
-      <section className="container-x pt-8 md:pt-10">
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
-          <div className="order-2 lg:order-1">
-            <h1 className="text-[clamp(2.7rem,5.6vw,4.9rem)] leading-[0.98] tracking-[-0.025em]">
-              Rajesh Panwar gets you <em className="font-medium italic [font-variation-settings:'SOFT'_100,'WONK'_1]">the birds.</em>
-            </h1>
-            <p className="mt-5 max-w-[32rem] text-[1.12rem] leading-[1.55] text-ink-2 md:text-[1.2rem]">
-              Small-group birding and bird-photography tours, India and abroad. Two birding lodges of our own in Kumaon.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <WhatsAppButton message={hello} />
-              <ButtonLink href="/departures">See departures</ButtonLink>
-            </div>
-            <CircadianChip className="mt-8" />
-          </div>
+      <PhaseHero next={tags[0]} message={hello} />
 
-          <div className="order-1 lg:order-2">
-            <div className="soft rounded-[2.4rem] p-3 sm:p-4">
-              <div className="soft-in relative aspect-[5/4.2] overflow-hidden rounded-[1.9rem] sm:aspect-[5/4]" style={{ background: "linear-gradient(170deg, var(--sky-a), var(--sky-b))" }}>
-                <Flock />
-                <figure className="bezel absolute bottom-[5%] left-[5%] w-[60%] -rotate-[3deg] sm:bottom-[7%] sm:w-[58%] p-1.5 transition-transform duration-500 ease-[var(--ease-spring)] hover:-rotate-1 sm:p-2">
-                  <div className="relative aspect-[3/2] overflow-hidden rounded-[1.1rem]">
-                    <Image
-                      src="/photos/grandala-flock-lachen.jpg"
-                      alt="A flock of Grandalas in a bare tree at Lachen, the males an electric ultramarine among the brown females"
-                      fill
-                      priority
-                      quality={80}
-                      sizes="(min-width: 1024px) 26vw, 55vw"
-                      className="object-cover"
-                      style={{ objectPosition: "46% 38%" }}
-                    />
-                  </div>
-                  <figcaption className="px-1.5 pt-1.5 pb-0.5 text-[0.72rem] leading-snug text-ink-3 sm:text-[0.78rem]">Grandalas · Lachen · Mar 2019</figcaption>
-                </figure>
-                {tags[0] ? (
-                  <div className="absolute top-[5%] right-[4%] w-[38%] max-w-[13rem] rotate-[2.5deg] sm:top-[7%] sm:right-[5%] sm:w-[40%]">
-                    <DepartureTag row={tags[0]} next small />
-                  </div>
-                ) : null}
-              </div>
+      {/* The record in four figures, lifted over the edge of the photograph. */}
+      <section aria-label="Avian Trails in figures" className="container-x relative z-10 -mt-10 md:-mt-14">
+        <dl className="soft grid grid-cols-2 gap-y-8 px-5 py-7 sm:px-8 md:grid-cols-4 md:divide-x md:divide-rule md:px-4 md:py-9">
+          {stats.map((s) => (
+            <div key={s.label} className="px-1 md:px-6">
+              <dt className="sr-only">{s.label}</dt>
+              <dd>
+                <span className={`num serif block text-[clamp(2.1rem,4vw,3rem)] leading-none font-semibold ${s.tone}`}>{s.value}</span>
+                <span className="mt-2 block text-[0.92rem] leading-snug text-ink-2">{s.label}</span>
+              </dd>
             </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </section>
 
-      {/* What leaves next: tags on the hide's board, dragged along a shelf. */}
+      {/* What leaves next: tags dragged along a shelf. */}
       <section aria-labelledby="next" className="pt-16 md:pt-24">
         <div className="container-x flex flex-wrap items-end justify-between gap-4">
           <div>
             <SectionTitle id="next">Next departures</SectionTitle>
-            <p className="mt-2 text-[0.95rem] text-ink-3">Seats as on {seatsAsOnLabel}. Drag the shelf, or tap a tag to open it.</p>
+            <p className="mt-2 text-[0.95rem] text-ink-3">Seats as on {seatsAsOnLabel}. Drag the shelf, or tap a tour to open it.</p>
           </div>
           <TextLink href="/departures">All {next.length} departures</TextLink>
         </div>
@@ -191,12 +225,12 @@ export default function Home() {
         </FlockIn>
       </section>
 
-      {/* The camera: a shelf of frames from the gallery, the most colour on the page. */}
-      <section aria-labelledby="frames" className="pt-16 md:pt-24">
+      {/* The camera, on the hour's deep colour: the most colour on the page. */}
+      <section aria-labelledby="frames" className="band band-deep">
         <div className="container-x flex flex-wrap items-end justify-between gap-4">
           <div>
             <SectionTitle id="frames">Frames from the field</SectionTitle>
-            <p className="mt-2 text-[0.95rem] text-ink-3">Rajesh&apos;s own photographs, made on the routes the tours run.</p>
+            <p className="mt-2 max-w-[34rem] text-[0.98rem] text-ink-2">Rajesh&apos;s own photographs, made on the same routes the tours run. Nothing on this site is stock or generated.</p>
           </div>
           <TextLink href="/gallery">The full gallery</TextLink>
         </div>
@@ -209,12 +243,12 @@ export default function Home() {
         </Shelf>
       </section>
 
-      {/* Where you sleep: both lodges, each with three birds from its doorstep. */}
-      <section aria-labelledby="lodges" className="pt-16 md:pt-24">
+      {/* Where you sleep, on the hour's warm colour: both lodges, three birds from each doorstep. */}
+      <section aria-labelledby="lodges" className="band band-warm">
         <div className="container-x flex flex-wrap items-end justify-between gap-4">
           <div>
             <SectionTitle id="lodges">Stay where the birds are</SectionTitle>
-            <p className="mt-2 text-[0.95rem] text-ink-3">Two birding lodges of our own in Kumaon, both run by Rajesh and Sheela.</p>
+            <p className="mt-2 text-[0.98rem] text-ink-2">Two birding lodges of our own in Kumaon, both run by Rajesh and Sheela.</p>
           </div>
           <TextLink href="/lodges">Both lodges</TextLink>
         </div>
@@ -264,7 +298,50 @@ export default function Home() {
         </FlockIn>
       </section>
 
-      {/* One piece of proof, not a wall of it. */}
+      {/* What the last groups actually saw. */}
+      <section aria-labelledby="latest" className="container-x pt-16 md:pt-24">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <SectionTitle id="latest">Latest from the field</SectionTitle>
+            <p className="mt-2 text-[0.95rem] text-ink-3">Totals as Rajesh posted them after each trip, with the eBird list where he shared one.</p>
+          </div>
+          <TextLink href="/field-reports">All {reports.length} field reports</TextLink>
+        </div>
+        <FlockIn className="shelf -mx-[clamp(1.25rem,4.5vw,2.75rem)] mt-2 gap-4 py-6 md:mx-0 md:grid-flow-row md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:py-0 md:mt-8">
+          {latest.map((r) => (
+            <article key={r.id} className="soft flex w-[80vw] max-w-[22rem] flex-col p-3 md:w-auto md:max-w-none">
+              {r.photo ? <Photo slug={r.photo} ratio={16 / 10} bezel={false} showCaption={false} alt={r.place} sizes="(min-width: 768px) 30vw, 100vw" /> : null}
+              <div className="flex flex-1 flex-col px-3 pt-4 pb-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-[1.25rem] leading-tight">{r.place}</h3>
+                    <p className="mt-1 text-[0.88rem] text-ink-3">{r.when}</p>
+                  </div>
+                  {r.species ? (
+                    <p className="shrink-0 text-right">
+                      <span className="num serif block text-[1.6rem] leading-none font-semibold text-teal">{r.species}</span>
+                      <span className="text-[0.75rem] text-ink-3">species</span>
+                    </p>
+                  ) : null}
+                </div>
+                <p className="mt-3 line-clamp-3 text-[0.95rem] text-ink-2">{r.text}</p>
+                <p className="mt-auto flex flex-wrap gap-x-5 pt-4 text-[0.92rem]">
+                  {r.ebird ? (
+                    <a href={r.ebird} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-medium text-ink">
+                      eBird list <ExternalLink className="size-3.5" strokeWidth={2} aria-hidden="true" />
+                    </a>
+                  ) : null}
+                  <Link href={`/field-reports#${r.id}`} className="text-ink-2">
+                    The full report
+                  </Link>
+                </p>
+              </div>
+            </article>
+          ))}
+        </FlockIn>
+      </section>
+
+      {/* One piece of proof, then three guests in their own words. */}
       <section aria-labelledby="proof" className="container-x pt-16 md:pt-24">
         <div className="soft grid items-center gap-8 p-4 sm:p-8 md:grid-cols-[0.85fr_1.15fr] md:gap-12">
           <Photo slug="rajesh-sheela" ratio={1} bezel={false} showCaption={false} alt="Rajesh and Sheela Panwar at home" sizes="(min-width: 768px) 34vw, 100vw" />
@@ -289,18 +366,49 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <FlockIn className="shelf -mx-[clamp(1.25rem,4.5vw,2.75rem)] mt-2 gap-4 py-6 md:mx-0 md:grid-flow-row md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:py-0 md:mt-6">
+          {words.map((r, i) => (
+            <figure key={r.name} className="soft flex w-[80vw] max-w-[22rem] flex-col p-6 md:w-auto md:max-w-none">
+              <Quote className={`size-7 ${["text-grandala-ink", "text-teal", "text-plum"][i % 3]}`} strokeWidth={1.6} aria-hidden="true" />
+              <blockquote className="serif mt-3 text-[1.18rem] leading-snug font-medium">“{r.pull}”</blockquote>
+              <figcaption className="mt-auto pt-5 text-[0.92rem]">
+                <span className="font-medium">{r.name}</span>, {r.from}
+                {r.context ? <span className="block text-ink-3">{r.context}</span> : null}
+              </figcaption>
+            </figure>
+          ))}
+        </FlockIn>
       </section>
 
-      {/* The close: tug the tag. */}
+      {/* Before you write: what people ask. */}
+      <section aria-labelledby="faq" className="container-x grid gap-10 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-14">
+        <div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
+          <SectionTitle id="faq">Before you write</SectionTitle>
+          <p className="mt-4 text-ink-2">What people usually ask Rajesh first. Anything else, ask him directly; he answers on WhatsApp himself.</p>
+          <WhatsAppButton message={hello} className="mt-6">
+            Ask on WhatsApp
+          </WhatsAppButton>
+        </div>
+        <div className="lg:col-span-8">
+          <Faq items={faq} />
+        </div>
+      </section>
+
+      {/* The close, on the hour's deep colour: tug the tag. */}
       <section aria-labelledby="ask" className="container-x pt-16 md:pt-24">
-        <div className="soft grid items-center gap-6 p-6 sm:p-10 md:grid-cols-[1fr_auto] md:gap-12">
+        <div className="band-deep relative isolate grid items-center gap-8 overflow-hidden rounded-[2rem] p-7 sm:p-12 md:grid-cols-[1fr_auto] md:gap-12">
+          <div aria-hidden="true" className="banner-plain absolute inset-0 -z-10" />
           <div>
-            <h2 id="ask" className="text-[clamp(1.8rem,3.4vw,2.5rem)] leading-[1.08]">
+            <h2 id="ask" className="text-[clamp(1.9rem,3.6vw,2.7rem)] leading-[1.06]">
               Ask Rajesh about a trip
             </h2>
             <p className="mt-4 max-w-[34rem] text-ink-2">Send a tour number, or just your dates and target birds. He replies with the day-by-day plan and the cost.</p>
             <p className="mt-5 text-[0.98rem] text-ink-2">
-              Or <Link href="/enquiry" className="font-medium text-ink">fill in the form</Link>, call{" "}
+              Or{" "}
+              <Link href="/enquiry" className="font-medium text-ink">
+                fill in the form
+              </Link>
+              , call{" "}
               <a href={`tel:${site.phone.number}`} className="num font-medium text-ink">
                 {site.phone.display}
               </a>

@@ -18,6 +18,13 @@
   --color-ground: var(--ground);
   --color-surface: var(--surface);
   --color-surface-hi: var(--surface-hi);
+  --color-paper: var(--paper);
+  --color-deep: var(--deep);
+  --color-deep-2: var(--deep-2);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-2: var(--on-deep-2);
+  --color-warm: var(--warm);
+  --color-glow: var(--glow);
   --color-well: var(--well);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
@@ -51,18 +58,37 @@
   --breakpoint-xs: 26rem;
 }
 
-/* Day: lichen-sage mist. The defaults, so the page is right even before the script runs. */
+/* Each hour is a full palette, not just a ground:
+     ground / paper / well  the light page, the cards lifted off it, the grooves pressed into it
+     deep / deep-2 / on-deep-*  the dark band of the hour (forest by day, plum at dawn, burgundy at
+                           golden hour, indigo at night) and the text that sits on it
+     warm / warm-paper / warm-well  the warm band of the hour (sand, peach, apricot, moss)
+     glow                  the hour's light on a deep band: sun gold, dawn rose, amber, moon teal
+   Plumage accents (grandala, sunbird, tragopan, teal, plum, ochre) stay constant by day. */
+
+/* Day: lichen sage, forest and sand. The defaults, so the page is right before the script runs. */
 :root,
 :root[data-phase="day"] {
   color-scheme: light;
-  --ground: #e3e9d7;
-  --surface: #e3e9d7;
-  --surface-hi: #ebf0e1;
-  --well: #d6dec8;
+  --ground: #eaeee0;
+  --surface: #fbfcf6;
+  --surface-hi: #ffffff;
+  --paper: #fbfcf6;
+  --well: #dde4d0;
   --ink: #1d2a1c;
   --ink-2: #455541;
   --ink-3: #4c5a46;
-  --rule: #c8d2b8;
+  --rule: #cdd6bf;
+  --edge: rgb(29 42 28 / 0.07);
+  --deep: #1c3428;
+  --deep-2: #25412f;
+  --on-deep: #eef1e4;
+  --on-deep-2: #c3d0bb;
+  --on-deep-3: #a5b89c;
+  --warm: #f2e9d2;
+  --warm-paper: #fdf9ee;
+  --warm-well: #e8dcbd;
+  --glow: #e9c46a;
   --moss: #34502e;
   --fern: #5f7d45;
   --grandala: #2c4dcc;
@@ -82,51 +108,90 @@
   --wait-bg: #efdfb8;
   --gone: #5c6457;
   --alert: #b0301c;
-  --hi: rgb(255 255 255 / 0.82);
-  --lo: rgb(80 102 64 / 0.3);
+  --hi: rgb(255 255 255 / 0.9);
+  --lo: rgb(52 74 40 / 0.22);
   --sky-a: #cfe0ee;
   --sky-b: #eef2e6;
   --flock: #28402a;
+  --hero-tint: rgb(14 30 20 / 0.62);
 }
 
+/* Dawn: river mist, plum dusk-to-dawn sky and peach. */
 :root[data-phase="dawn"] {
-  --ground: #e6e7d9;
-  --surface: #e6e7d9;
-  --surface-hi: #eeefe3;
-  --well: #d9dbca;
-  --rule: #cfd1bd;
-  --hi: rgb(255 253 247 / 0.88);
-  --lo: rgb(118 108 88 / 0.28);
+  --ground: #efebe3;
+  --surface: #fdfbf7;
+  --surface-hi: #ffffff;
+  --paper: #fdfbf7;
+  --well: #e4dfd3;
+  --rule: #d8d1c2;
+  --edge: rgb(42 36 64 / 0.08);
+  --deep: #2a2440;
+  --deep-2: #352e50;
+  --on-deep: #f3eef6;
+  --on-deep-2: #cfc6dd;
+  --on-deep-3: #b2a8c6;
+  --warm: #f7e3d3;
+  --warm-paper: #fff8f2;
+  --warm-well: #efd3be;
+  --glow: #f2a7a0;
+  --hi: rgb(255 253 249 / 0.92);
+  --lo: rgb(84 64 92 / 0.2);
   --sky-a: #f3cdb4;
   --sky-b: #d9d6ec;
   --flock: #3a3548;
+  --hero-tint: rgb(28 22 46 / 0.6);
 }
 
+/* Golden hour: dry grass, burgundy and apricot. */
 :root[data-phase="dusk"] {
-  --ground: #e6d9aa;
-  --surface: #e6d9aa;
-  --surface-hi: #eee2b8;
-  --well: #dacb98;
-  --rule: #cdbd86;
+  --ground: #ecdfb4;
+  --surface: #fcf5e1;
+  --surface-hi: #fffaec;
+  --paper: #fcf5e1;
+  --well: #dfcf9e;
+  --rule: #d3c18c;
+  --edge: rgb(58 29 27 / 0.09);
+  --deep: #3a1d1b;
+  --deep-2: #4a2722;
+  --on-deep: #f8ead6;
+  --on-deep-2: #e3c8ae;
+  --on-deep-3: #cdae92;
+  --warm: #f6d6b4;
+  --warm-paper: #fff3e4;
+  --warm-well: #ecc39a;
+  --glow: #f4a259;
   --ink-2: #454c3a;
   --ink-3: #4a4f3e;
-  --hi: rgb(255 248 220 / 0.8);
-  --lo: rgb(122 92 30 / 0.32);
+  --hi: rgb(255 250 232 / 0.85);
+  --lo: rgb(110 70 24 / 0.24);
   --sky-a: #f0b27a;
   --sky-b: #e8a3a0;
   --flock: #3b2a22;
+  --hero-tint: rgb(42 18 12 / 0.58);
 }
 
+/* Night: moss, indigo sky and moon teal. */
 :root[data-phase="night"] {
   color-scheme: dark;
-  --ground: #172019;
-  --surface: #202b22;
+  --ground: #141c17;
+  --surface: #1e2822;
   --surface-hi: #26322a;
-  --well: #121a14;
+  --paper: #1e2822;
+  --well: #0f1612;
   --ink: #e3e9d7;
   --ink-2: #b6c1a9;
   --ink-3: #95a188;
   --rule: #2c3a2e;
+  --edge: rgb(227 233 215 / 0.07);
+  --deep: #0c1322;
+  --deep-2: #151e33;
+  --on-deep: #e6ecf5;
+  --on-deep-2: #b6c2d6;
+  --on-deep-3: #94a1b9;
+  --warm: #1b2a20;
+  --warm-paper: #243529;
+  --warm-well: #132018;
+  --glow: #7ee0d6;
   --moss: #b9cf9f;
   --fern: #9fbb7e;
   --grandala: #4d69e8;
@@ -145,11 +210,61 @@
   --wait-bg: #3e3218;
   --gone: #97a28c;
   --alert: #ff8a70;
-  --hi: rgb(210 230 190 / 0.09);
-  --lo: rgb(0 0 0 / 0.55);
+  --hi: rgb(210 230 190 / 0.07);
+  --lo: rgb(0 0 0 / 0.5);
   --sky-a: #0e1531;
   --sky-b: #1b2a3a;
   --flock: #dfe7d2;
+  --hero-tint: rgb(6 10 20 / 0.5);
+}
+
+/* Bands: a section can sit on the hour's deep or warm colour. They re-point the tokens, so every
+   component inside (titles, cards, tags, links, photos) adapts without its own variant. */
+.band-deep {
+  --ground: var(--deep);
+  --surface: var(--deep-2);
+  --surface-hi: color-mix(in oklab, var(--deep-2) 88%, white);
+  --paper: var(--deep-2);
+  --well: color-mix(in oklab, var(--deep) 72%, black);
+  --ink: var(--on-deep);
+  --ink-2: var(--on-deep-2);
+  --ink-3: var(--on-deep-3);
+  --rule: color-mix(in oklab, var(--on-deep) 24%, transparent);
+  --edge: rgb(255 255 255 / 0.07);
+  --hi: rgb(255 255 255 / 0.06);
+  --lo: rgb(0 0 0 / 0.42);
+  --grandala-ink: #b3c0ff;
+  --tragopan: #ffa3b6;
+  --teal: #86e3d9;
+  --plum: #dcb4ee;
+  --ochre: var(--glow);
+  --moss: #c3d6aa;
+  --fern: #a9c48a;
+  --seat: #a8d98f;
+  --seat-bg: rgb(168 217 143 / 0.14);
+  --wait: #f0c56a;
+  --wait-bg: rgb(240 197 106 / 0.14);
+  --gone: var(--on-deep-3);
+  --flock: var(--on-deep);
+  color-scheme: dark;
+  background: var(--deep);
+  color: var(--ink);
+}
+.band-warm {
+  --ground: var(--warm);
+  --surface: var(--warm-paper);
+  --paper: var(--warm-paper);
+  --well: var(--warm-well);
+  background: var(--warm);
+  color: var(--ink);
+}
+/* One vertical rhythm for every band seam. */
+.band {
+  padding-block: clamp(4.5rem, 8vw, 6.5rem);
+  margin-top: clamp(4rem, 7vw, 6rem);
+}
+.band + .band {
+  margin-top: 0;
 }
 
 @layer base {
@@ -257,27 +372,31 @@
 
   /* Raised: moulded out of the ground, lit by the sun. */
   .soft {
-    background: var(--surface);
+    background: var(--paper);
     border-radius: var(--radius-soft);
     box-shadow:
-      calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi),
-      var(--lx) var(--ly) 20px var(--lo);
+      inset 0 1px 0 var(--hi),
+      0 0 0 1px var(--edge),
+      0 1px 2px var(--edge),
+      calc(var(--lx) * 0.7) calc(var(--ly) * 1.4) 34px -14px var(--lo);
   }
   /* Pressed into the ground. */
   .soft-in {
     background: var(--well);
     border-radius: var(--radius-soft);
     box-shadow:
-      inset var(--lx) var(--ly) 12px var(--lo),
-      inset calc(var(--lx) * -1) calc(var(--ly) * -1) 12px var(--hi);
+      inset 0 0 0 1px var(--edge),
+      inset calc(var(--lx) * 0.5) calc(var(--ly) * 0.7) 10px var(--lo),
+      inset calc(var(--lx) * -0.5) calc(var(--ly) * -0.7) 10px var(--hi);
   }
   /* A small raised pebble (chips, icon buttons). */
   .pebble {
-    background: var(--surface);
+    background: var(--paper);
     border-radius: 999px;
     box-shadow:
-      calc(var(--lx) * -0.6) calc(var(--ly) * -0.6) 10px var(--hi),
-      calc(var(--lx) * 0.6) calc(var(--ly) * 0.6) 12px var(--lo);
+      inset 0 1px 0 var(--hi),
+      0 0 0 1px var(--edge),
+      calc(var(--lx) * 0.4) calc(var(--ly) * 0.8) 16px -8px var(--lo);
   }
 
   /* Things you can press: they lift on hover and sink, with a spring, when pressed. */
@@ -310,12 +429,13 @@
 
   /* Photo bezel: the photograph sits in a moulded frame. */
   .bezel {
-    padding: 0.5rem;
-    background: var(--surface);
-    border-radius: calc(var(--radius-soft) + 0.25rem);
+    padding: 0.4rem;
+    background: var(--paper);
+    border-radius: calc(var(--radius-soft) + 0.15rem);
     box-shadow:
-      calc(var(--lx) * -1) calc(var(--ly) * -1) 18px var(--hi),
-      var(--lx) var(--ly) 22px var(--lo);
+      inset 0 1px 0 var(--hi),
+      0 0 0 1px var(--edge),
+      calc(var(--lx) * 0.7) calc(var(--ly) * 1.4) 30px -14px var(--lo);
   }
 
   /* Specimen tag: a card with a punched eyelet. */
@@ -386,6 +506,62 @@
   50% {
     transform: rotate(1.6deg);
   }
+}
+
+/* Home hero: the hour's photograph. Only the matching one is displayed (and so loaded). */
+.hero-photo,
+.hero-caption {
+  display: none;
+}
+:root[data-phase="dawn"] [data-for="dawn"].hero-photo,
+:root[data-phase="day"] [data-for="day"].hero-photo,
+:root[data-phase="dusk"] [data-for="dusk"].hero-photo,
+:root[data-phase="night"] [data-for="night"].hero-photo,
+:root[data-phase="dawn"] [data-for="dawn"].hero-caption,
+:root[data-phase="day"] [data-for="day"].hero-caption,
+:root[data-phase="dusk"] [data-for="dusk"].hero-caption,
+:root[data-phase="night"] [data-for="night"].hero-caption {
+  display: block;
+}
+@media (max-width: 40rem) {
+  .hero-caption {
+    display: none !important;
+  }
+}
+.hero-wash {
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.42) 0%, transparent 24%),
+    linear-gradient(90deg, var(--hero-tint) 0%, color-mix(in oklab, var(--deep) 40%, transparent) 52%, transparent 88%),
+    linear-gradient(0deg, color-mix(in oklab, var(--deep) 82%, transparent) 0%, transparent 58%);
+}
+@media (max-width: 40rem) {
+  .hero-wash {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 0.42) 0%, transparent 24%),
+      linear-gradient(0deg, color-mix(in oklab, var(--deep) 94%, transparent) 0%, color-mix(in oklab, var(--deep) 62%, transparent) 55%, color-mix(in oklab, var(--deep) 20%, transparent) 100%);
+  }
+}
+
+/* Page banners: the photograph washed from the left (and lightly from the top, under the header)
+   in the hour's deep colour, so the title always reads and the colour of the hour shows through. */
+.banner-wash {
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.38) 0%, transparent 30%),
+    linear-gradient(90deg, color-mix(in oklab, var(--deep) 90%, transparent) 0%, color-mix(in oklab, var(--deep) 66%, transparent) 40%, color-mix(in oklab, var(--deep) 12%, transparent) 78%, transparent 100%),
+    linear-gradient(0deg, color-mix(in oklab, var(--deep) 60%, transparent) 0%, transparent 50%);
+}
+@media (max-width: 40rem) {
+  .banner-wash {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 0.4) 0%, transparent 30%),
+      linear-gradient(0deg, color-mix(in oklab, var(--deep) 92%, transparent) 0%, color-mix(in oklab, var(--deep) 55%, transparent) 60%, color-mix(in oklab, var(--deep) 30%, transparent) 100%);
+  }
+}
+.banner-plain {
+  background:
+    radial-gradient(60rem 30rem at 88% -10%, color-mix(in oklab, var(--glow) 24%, transparent), transparent 70%),
+    radial-gradient(50rem 26rem at 0% 110%, var(--deep-2), transparent 70%),
+    var(--deep);
 }
 
 /* ---------------------------------------------------------------------------------------------

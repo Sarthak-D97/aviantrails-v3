@@ -25,11 +25,16 @@ Motion, all in plain JavaScript and all switched off for visitors who ask for re
 Every photograph and video clip is Rajesh's own (or his guests'), taken from his Instagram and the old website.
 Nothing on the site is AI-generated.
 
+**Look, per hour.** Each time of day is a full palette: the page ground, lifted paper cards, a deep band colour (plum at
+dawn, forest by day, burgundy at golden hour, indigo at night), a warm band (peach, sand, apricot, moss) and a glow
+accent (rose, sun gold, amber, moon teal). Pages alternate light, deep and warm sections. The home page opens on a
+full-width photograph chosen by the hour, and every inner page opens on a photo banner.
+
 ## Pages
 
 | Route | What it is |
 | --- | --- |
-| `/` | The promise ("Rajesh Panwar gets you the birds.") beside the hide window (flock, Grandalas, next departure tag), a shelf of next departures, the three ways to travel, a shelf of frames from the gallery, both lodges with three birds from each doorstep, one piece of proof, and the pull tag |
+| `/` | A full-width photograph for the hour with the promise and the next departure, four figures from Rajesh's record, a shelf of next departures, three ways to travel, frames from the gallery, both lodges with three doorstep birds each, the latest field reports, Rajesh & Sheela with guest words, an FAQ, and the pull tag |
 | `/departures` | The 2026–27 departures as tags (filter by region; tap a tour to open it) and, folded away, the tours already departed |
 | `/departures/[tour]` | One page per tour: dates, days, seats, cost, highlights, the last run's report and eBird list, a photo shelf, reservation form |
 | `/custom-tours` | Six regions, each with its places folded under a count, and a custom-trip request |

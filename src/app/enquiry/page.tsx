@@ -66,8 +66,9 @@ export default function EnquiryPage() {
 
   return (
     <>
-      <PageHead name="Enquiry" note="Send the form, or just a tour number. Rajesh replies with the day-by-day plan and the cost." />
-      <section className="container-x grid gap-10 pt-8 pb-20 md:pt-10 md:pb-28 lg:grid-cols-12 lg:gap-14">
+      <PageHead
+        photo={{ slug: "milieu-villa-terrace-view", caption: "The view from our terrace · Milieu Villa · Jul 2024", position: "50% 55%" }} name="Enquiry" note="Send the form, or just a tour number. Rajesh replies with the day-by-day plan and the cost." />
+      <section className="container-x grid gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-8">
           <ReservationForm journeys={journeyOptions()} />
         </div>

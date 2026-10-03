@@ -220,10 +220,25 @@ Each departure line, custom-tour region and gallery group wears one accent, mapp
 - **Alert** (`alert`): form errors and invalid outlines only. Night #ff8a70.
 
 ### Neutral
-- **Lichen Sage Ground** (`ground`): page, raised surfaces, pebbles, the eyelet. Surface equals ground; depth comes from shadow alone.
+- **Lichen Sage Ground** (`ground`): the page and the eyelet.
+- **Paper** (`paper`): cards, pebbles, bezels and the header pill, a step lighter than the ground, lifted by a sun-cast shadow, a 1px `edge` hairline and an inner top highlight.
 - **Pressed Well** (`well`): inset wells, form fields, selected chips, photo placeholders.
 - **Rule** (`rule`): scrollbar thumb and resting link underline.
 - **Ink / Ink 2 / Ink 3** (`ink`, `ink-2`, `ink-3`): headings and key numbers; body and nav; meta, dates and captions. Ink 3 holds at least 4.6:1 on `well` by day and at dusk, so captions may sit in wells.
+
+### The hour's full palette
+Every phase is a complete palette, not just a ground. Besides ground, paper and well, each hour has a **deep** band colour (with `on-deep`, `on-deep-2`, `on-deep-3` text), a **warm** band colour (`warm`, `warm-paper`, `warm-well`) and a **glow** (its light on a deep band: the italic "the birds.", footer headings, contact icons).
+
+| Phase | ground | paper | deep | warm | glow |
+|---|---|---|---|---|---|
+| Dawn | #efebe3 mist | #fdfbf7 | #2a2440 plum | #f7e3d3 peach | #f2a7a0 rose |
+| Day | #eaeee0 lichen | #fbfcf6 | #1c3428 forest | #f2e9d2 sand | #e9c46a sun gold |
+| Dusk | #ecdfb4 dry grass | #fcf5e1 | #3a1d1b burgundy | #f6d6b4 apricot | #f4a259 amber |
+| Night | #141c17 moss | #1e2822 | #0c1322 indigo | #1b2a20 moss | #7ee0d6 moon teal |
+
+All text pairs hold AA: ink-3 at least 5.1:1 on every well and warm well, on-deep-3 at least 5.3:1 on deep-2.
+
+**Bands.** `.band-deep` and `.band-warm` re-point the tokens (ground, paper, well, ink, accents) so any component inside adapts with no variant. `.band` gives the one vertical rhythm (padding clamp(4.5rem, 8vw, 6.5rem), the same as the seam above it; two bands touching share no gap). Pages alternate light, deep and warm: the home page puts the gallery shelf on deep and the lodges on warm; tour pages put Rajesh's frames on deep; lodge pages put the seasons on warm and the doorstep birds on deep; about puts the record on warm and the groups on deep; the footer and the top contact bar are always deep.
 
 ### Circadian phases
 | Phase | ground | well | rule | sky-a to sky-b | flock | hi | lo |
@@ -286,7 +301,7 @@ Depth is soft UI: dual shadows (a light `--hi` on the sun side, a coloured `--lo
 ### Named Rules
 **The Sun-Cast Rule.** Every shadow reads `--lx`/`--ly`. A shadow with fixed pixel offsets is a defect.
 
-**The Same-Ground Rule.** Raised and inset surfaces share the ground colour (inset uses `well`). If a card needs a different fill to be seen, the shadow is wrong.
+**The Paper Rule.** Cards are paper on the ground: one step lighter, a hairline `edge`, an inner highlight and a long soft sun-cast shadow. Inset surfaces use `well`.
 
 ## 5. Components
 
@@ -331,6 +346,18 @@ An inset rounded slot filled with the phase's sky gradient, holding a 64-bird bo
 ### Flock Landing
 Lists below the fold arrive like a flock: from 25% opacity and a small curved offset (about ±14–32px, ±2.5–3deg), each item lands over 760ms on the spring, 70ms apart, cycling every 8 items. Items already in view are never held back, and the resting state is always visible.
 
+### Home hero (signature)
+Full-bleed under the floating header, one photograph per hour, all Rajesh's own: Panchachuli at first light (dawn), the Indian Paradise Flycatcher that was his first bird photograph (day), Panchachuli at sunset (dusk), star trails over Harsil (night). Only the hour's image is displayed, so only it loads. A `hero-wash` darkens from the left and the bottom in the hour's deep colour; the headline sits in on-deep with "the birds." in the glow; a light flock crosses the upper sky; the next-departure tag is pinned bottom right on desktop. A paper card of four figures (#1 eBirder in India 2019 and 2021, 2,952 world list, 17 departures, 10 countries in 2025), each in its own plumage colour, overlaps the hero's lower edge.
+
+### Page banners
+Every inner page opens on a full-bleed photograph (`PageHead photo`), washed from the left in the hour's deep colour, with the photograph's own caption in the corner. Tour pages use their first wide frame when one exists, otherwise the deep band with a glow.
+
+### Contact bar and footer
+A slim deep bar above the header carries the address, WhatsApp, phone, email and social marks (phones keep WhatsApp and call). The footer is full width on deep: the business and a WhatsApp action, Explore, both lodges with altitude, Follow, Reach us, and the seats-as-on date.
+
+### FAQ
+"Before you write": nine questions answered only from published facts. Each is a paper `details` row with a plus that turns to a cross; the first is open. Also emitted as FAQPage structured data.
+
 ### Preloader (signature)
 First light in the hide, once per visit: a full-screen ground with the sky washes, a raised pebble (7.5rem) holding the moss Sunbird and breathing on a 2.4s loop, the wordmark in Fraunces, a groove pressed into the ground that fills in plumage colours (grandala → teal → ochre → sunbird → tragopan) over 1.1s, and the hour's name ("Golden hour · finding the birds"). A V of seven stroked birds crosses the screen, wings beating. It lifts (fade, content rises 14px) once fonts and the first photographs are in, no sooner than 1.1s and no later than 2.4s; a CSS animation clears it at 2.6s if script never runs. The head script marks repeat views in the session before paint, so later pages never see it. Reduced motion: no flight, no breathing.
 
@@ -357,7 +384,8 @@ Between pages (`app/loading.tsx`): the Sunbird pebble and the plumage groove on 
 - **Don't** become "a cold white photo portfolio that doesn't sell trips or show the people".
 - **Don't** make "upcoming dates and seats … hard to find".
 - **Don't** use flat glassy SaaS softness: no glassmorphism, no backdrop blur, no gradient buttons.
-- **Don't** add borders or hairline outlines to soft surfaces, or give a card a fill different from the ground to separate it.
+- **Don't** use visible borders: the only outline on a card is the 1px `edge` hairline in its shadow stack.
+- **Don't** put two bands of the same kind next to each other, or use a band colour from another hour.
 - **Don't** use a fixed top-left light or a grey drop shadow with hard-coded offsets.
 - **Don't** add uppercase kickers or eyebrow labels above headings.
 - **Don't** use Sunbird flame or seat colours for decoration, give a region hue to a state, or add any accent hue without a bird behind it.

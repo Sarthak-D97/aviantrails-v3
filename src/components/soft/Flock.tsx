@@ -8,7 +8,8 @@ import { useEffect, useRef } from "react";
 
 type Bird = { x: number; y: number; vx: number; vy: number; flap: number };
 
-export function Flock({ count = 64, className = "" }: { count?: number; className?: string }) {
+/** `colorVar` names the custom property the birds are drawn in, read from the canvas itself. */
+export function Flock({ count = 64, className = "", colorVar = "--flock" }: { count?: number; className?: string; colorVar?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Flock({ count = 64, className = "" }: { count?: number; classNam
     const birds: Bird[] = [];
 
     const readColour = () => {
-      colour = getComputedStyle(document.documentElement).getPropertyValue("--flock").trim() || colour;
+      colour = getComputedStyle(canvas).getPropertyValue(colorVar).trim() || colour;
     };
 
     const resize = () => {
@@ -202,7 +203,7 @@ export function Flock({ count = 64, className = "" }: { count?: number; classNam
       host.removeEventListener("pointermove", onMove);
       host.removeEventListener("pointerleave", onLeave);
     };
-  }, [count]);
+  }, [count, colorVar]);
 
   return <canvas ref={ref} aria-hidden="true" className={`pointer-events-none absolute inset-0 h-full w-full ${className}`} />;
 }

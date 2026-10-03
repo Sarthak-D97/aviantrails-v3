@@ -16,11 +16,12 @@ export default function FieldReportsPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "vinaceous-rosefinch", caption: "Vinaceous Rosefinch · Nainital", position: "70% 40%" }}
         name="Field reports"
         note={`${reports.length} trips · ${withList} with eBird lists`}
         lead="After most trips Rajesh posts what the group saw: the total, the stars, and the targets that got away. Pick a year."
       />
-      <div className="container-x pt-8 pb-20 md:pt-10 md:pb-28">
+      <div className="container-x pt-12 md:pt-16">
         <ReportBoard reports={reports} />
         <p className="mt-12 max-w-2xl text-ink-2">
           Trip updates go out live on{" "}

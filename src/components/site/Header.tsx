@@ -33,7 +33,7 @@ export function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-3 z-40 px-3 sm:top-4 sm:px-5">
+    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5 sm:pt-4">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-4 focus:z-50 focus:rounded-full focus:bg-grandala focus:px-4 focus:py-2 focus:text-on-grandala">
         Skip to content
       </a>

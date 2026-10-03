@@ -15,11 +15,12 @@ export default function GalleryPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "borneo-black-crowned-pitta", caption: "Black-crowned Pitta · Borneo · Jul 2025", position: "65% 45%" }}
         name="Gallery"
         note={`${count} photographs · all by Rajesh Panwar`}
         lead="Captioned the way Rajesh captions them: the bird, the place, the month. Most were made on the same routes the tours run."
       />
-      <div className="container-x pt-8 pb-20 md:pt-10 md:pb-28">
+      <div className="container-x pt-12 md:pt-16">
         <GalleryGrid groups={gallery} />
       </div>
     </>

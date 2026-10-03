@@ -27,12 +27,13 @@ export default function DeparturesPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "costarica-red-headed-barbet", caption: "Red-headed Barbet · Costa Rica · Feb 2024", position: "70% 45%" }}
         name={`Departures ${site.seasonLabel}`}
         note={`${tours.length} small-group tours this season · seats as on ${seatsAsOnLabel}`}
         lead="Tap a tour to open it. Send its number to Rajesh on WhatsApp for the day-by-day plan and the cost."
       />
 
-      <section aria-label="Upcoming departures" className="container-x pt-8 md:pt-10">
+      <section aria-label="Upcoming departures" className="container-x pt-12 md:pt-16">
         <TagBoard rows={next.map((t) => toTag(t, now))} lines={lines} />
 
         <div className="soft-in mt-12 flex flex-wrap items-center justify-between gap-5 p-6 sm:p-7">
@@ -88,7 +89,6 @@ export default function DeparturesPage() {
           </details>
         </section>
       ) : null}
-      <div className="pb-20 md:pb-28" />
     </>
   );
 }

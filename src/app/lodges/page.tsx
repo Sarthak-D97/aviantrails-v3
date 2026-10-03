@@ -17,11 +17,12 @@ export default function LodgesPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "barati-rau-waterfall", caption: "Barati Rau waterfall · Kaladhungi · Jan 2026", position: "50% 60%" }}
         name="Our lodges"
         note="Two birding lodges of our own, both opened in 2022"
         lead="Having our own birding lodges was a long-awaited dream. We run both ourselves, with our own guides, and both sit where the birds are: one at the edge of Corbett's forest, one in the Cheer Pheasant hills."
       />
-      <section className="container-x grid gap-8 pt-8 pb-20 md:pt-10 md:pb-28 lg:grid-cols-2">
+      <section className="container-x grid gap-8 pt-12 md:pt-16 lg:grid-cols-2">
         {lodges.map((l, i) => (
           <Link key={l.slug} href={`/lodges/${l.slug}`} className="soft press group flex flex-col p-3 text-ink no-underline">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.2rem] bg-well">

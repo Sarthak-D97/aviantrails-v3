@@ -45,9 +45,9 @@ export default async function LodgePage({ params }: { params: Promise<{ slug: st
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <PageHead name={l.name} note={`${l.place} · ${l.altitude} above sea level · open since ${l.opened}`} />
+      <PageHead photo={{ slug: l.hero, caption: l.heroCaption, position: "50% 55%" }} name={l.name} note={`${l.place} · ${l.altitude} above sea level · open since ${l.opened}`} />
 
-      <section className="container-x grid gap-10 pt-8 md:pt-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+      <section className="container-x grid gap-10 pt-12 md:pt-16 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-5">
           <p className="serif text-[clamp(1.35rem,2.3vw,1.75rem)] leading-[1.3] font-medium">{l.lead}</p>
           <WhatsAppButton message={l.enquiry} className="mt-7">
@@ -55,7 +55,7 @@ export default async function LodgePage({ params }: { params: Promise<{ slug: st
           </WhatsAppButton>
         </div>
         <div className="lg:col-span-7">
-          <Photo slug={l.hero} caption={l.heroCaption} ratio={3 / 2} priority quality={85} sizes="(min-width: 1024px) 55vw, 100vw" />
+          <Photo slug={l.doorstep[0].slug} caption={l.doorstep[0].caption} ratio={3 / 2} quality={85} sizes="(min-width: 1024px) 55vw, 100vw" />
         </div>
       </section>
 
@@ -78,7 +78,8 @@ export default async function LodgePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section aria-labelledby="calendar" className="container-x pt-16 md:pt-24">
+      <section aria-labelledby="calendar" className="band band-warm">
+        <div className="container-x">
         <SectionTitle id="calendar">When to come</SectionTitle>
         <FlockIn as="ol" className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {l.seasons.map((s) => (
@@ -88,9 +89,10 @@ export default async function LodgePage({ params }: { params: Promise<{ slug: st
             </li>
           ))}
         </FlockIn>
+        </div>
       </section>
 
-      <section aria-labelledby="doorstep" className="pt-16 md:pt-24">
+      <section aria-labelledby="doorstep" className="band band-deep">
         <div className="container-x">
           <SectionTitle id="doorstep">On the doorstep</SectionTitle>
           <p className="mt-3 text-ink-3">Photographed by Rajesh at or near the lodge.</p>
@@ -103,7 +105,7 @@ export default async function LodgePage({ params }: { params: Promise<{ slug: st
         </Shelf>
       </section>
 
-      <section aria-labelledby="getting-there" className="container-x grid gap-10 pt-16 pb-20 md:pt-24 md:pb-28 lg:grid-cols-12 lg:gap-14">
+      <section aria-labelledby="getting-there" className="container-x grid gap-10 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-4">
           <SectionTitle id="getting-there">Getting there</SectionTitle>
           <dl className="soft-in mt-6 grid gap-0.5 p-2">

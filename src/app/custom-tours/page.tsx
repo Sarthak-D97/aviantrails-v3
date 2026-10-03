@@ -20,12 +20,13 @@ export default function CustomToursPage() {
   return (
     <>
       <PageHead
+        photo={{ slug: "panchachuli-sunset", caption: "Panchachuli at sunset · Munsyari · Nov 2022", position: "50% 55%" }}
         name="Custom tours"
         note={`${lines.length} regions · ${placeCount} places · your dates, your target birds`}
         lead="Tell Rajesh what you want to see, when you can travel and how you like to shoot. He plans the route, the stays and the local guides, then sends the day-by-day plan and the cost on WhatsApp."
       />
 
-      <section aria-label="Where we go" className="container-x pt-8 md:pt-10">
+      <section aria-label="Where we go" className="container-x pt-12 md:pt-16">
         <FlockIn as="ol" className="grid gap-6 md:grid-cols-2">
           {lines.map((l) => {
             const accent = accentFor(l.id);
@@ -64,7 +65,7 @@ export default function CustomToursPage() {
         </FlockIn>
       </section>
 
-      <section aria-labelledby="plan" className="container-x grid gap-10 pt-16 pb-20 md:pt-24 md:pb-28 lg:grid-cols-12 lg:gap-14">
+      <section aria-labelledby="plan" className="container-x grid gap-10 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
           <SectionTitle id="plan">Plan yours</SectionTitle>
           <p className="mt-4 text-ink-2">Put your target birds, your lens and any limits on walking or altitude in the note. Rajesh works out the season and the route from there.</p>
